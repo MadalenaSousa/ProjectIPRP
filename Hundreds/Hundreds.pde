@@ -15,7 +15,7 @@ void draw() {
   image(background,0,0,width,height);
   
   star.desenha();
-  if(mousePressed) {
+  if(mousePressed && dist(star.x,star.y,mouseX,mouseY)<=star.raio) {
     star.grow();
     textAlign(CENTER,CENTER);
     fill(200);
