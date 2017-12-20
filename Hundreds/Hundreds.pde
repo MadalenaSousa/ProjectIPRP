@@ -16,8 +16,11 @@ void draw() {
   star.desenha();
   if(mousePressed) {
     star.grow();
+    textAlign(CENTER,CENTER);
+    fill(255);
+    textSize(100);
+    text(star.redgiant(),width/2,height/2);
   }
-  //star.redgiant();
   star.move();
   
 }
