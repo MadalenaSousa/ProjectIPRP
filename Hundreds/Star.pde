@@ -19,13 +19,13 @@ class Star {
     r=255;
     g=255;
     b=255;
-    cor = color(r,g,b);
+    //cor = color(r,g,b);
     velx = 8;
     vely = 8;
     n=0;
   }
 
-  Star(float x, float y, float raio, color cor, float velx, float vely, int r,int g, int b, int n) {
+  Star(float x, float y, float raio, float velx, float vely, int r,int g, int b, int n) {
 
     this.x = x;
     this.y = y;
@@ -33,7 +33,7 @@ class Star {
     this.r=r;
     this.g=g;
     this.b=b;
-    this.cor = color(r,g,b);
+    //this.cor = color(r,g,b);
     this.velx = velx;
     this.vely = vely;
     this.n=n;
@@ -95,7 +95,7 @@ class Star {
   }
   
   int redgiant() {
-    //map(n*,raio,raio+100,0,100);
+    //map(n,raio,raio+100,0,100);
     if(n<100){
       n=n+1;
       r=r+1;
@@ -114,7 +114,7 @@ class Star {
 
     ellipseMode(CENTER);
     noStroke();
-    fill(cor);
+    fill(r,g,b);
     ellipse(x, y, 2*raio, 2*raio);
   }
   

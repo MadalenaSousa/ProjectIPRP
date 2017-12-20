@@ -5,7 +5,7 @@ float raio=30;
 void setup() {
   size(1000,1000);
 
-  star = new Star(random(raio,width-raio),random(raio,height-raio),raio,color(255),8,8,255,255,255,0);
+  star = new Star(random(raio,width-raio),random(raio,height-raio),raio,8,8,255,255,255,0);
   background = loadImage("Background.png");
   
 }
