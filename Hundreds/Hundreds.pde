@@ -14,10 +14,10 @@ void draw() {
   image(background,0,0,width,height);
   
   star.desenha();
-  if(mousePressed) {
+  /*if(mousePressed) {
     star.grow();
   }
-  star.redgiant();
+  star.redgiant();*/
   star.move();
   
 }
