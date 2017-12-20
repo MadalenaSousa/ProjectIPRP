@@ -30,10 +30,7 @@ class Star {
   }
 
   void move() {
-
-    x = x + velx;
-    y = y + vely;
-
+    
     if (x >= width - raio) { 
       x = width-raio;
       velx = velx*(-1);
@@ -53,6 +50,10 @@ class Star {
       y = raio;
       vely = vely*(-1);
     }
+    
+    x=x+velx;
+    y=y+vely;
+    
   }
 
   boolean colide(Star c) {
@@ -77,6 +78,10 @@ class Star {
       vely = abs(vely);
       c.vely = -abs(c.vely);
     }
+  }
+  
+  void grow(){
+    raio=raio+2;
   }
 
   void desenha() { 
