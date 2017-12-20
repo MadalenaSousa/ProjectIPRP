@@ -101,4 +101,6 @@ class Star {
     fill(cor);
     ellipse(x, y, 2*raio, 2*raio);
   }
+  
+  ola ola!
 }
