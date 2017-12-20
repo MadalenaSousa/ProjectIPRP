@@ -102,5 +102,5 @@ class Star {
     ellipse(x, y, 2*raio, 2*raio);
   }
   
-  ola ola!
+
 }
