@@ -1,10 +1,11 @@
 Star star;
 PImage background;
+float raio=30;
 
 void setup() {
   size(1000,1000);
 
-  star = new Star();
+  star = new Star(random(raio,width-raio),random(raio,height-raio),raio,color(255),8,8,255,255,255,0);
   background = loadImage("Background.png");
   
 }
@@ -17,7 +18,7 @@ void draw() {
   if(mousePressed) {
     star.grow();
     textAlign(CENTER,CENTER);
-    fill(255);
+    fill(200);
     textSize(100);
     text(star.redgiant(),width/2,height/2);
   }

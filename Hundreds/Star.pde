@@ -9,25 +9,31 @@ class Star {
 
   color cor;
   
-  int n;
+  int r,g,b,n;
   
   //Métodos
   Star() { 
     x = random(raio,width-raio);
     y = random(raio,height-raio);
     raio = 30;
-    cor = color(255);
+    r=255;
+    g=255;
+    b=255;
+    cor = color(r,g,b);
     velx = 8;
     vely = 8;
     n=0;
   }
 
-  Star(float x, float y, float raio, color cor, float velx, float vely, int n) {
+  Star(float x, float y, float raio, color cor, float velx, float vely, int r,int g, int b, int n) {
 
     this.x = x;
     this.y = y;
     this.raio = raio;
-    this.cor = color(cor);
+    this.r=r;
+    this.g=g;
+    this.b=b;
+    this.cor = color(r,g,b);
     this.velx = velx;
     this.vely = vely;
     this.n=n;
@@ -85,12 +91,22 @@ class Star {
   }
   
   void grow(){
-    raio=raio+2;
+    raio=raio+0.8;
   }
   
   int redgiant() {
-    map(n,raio,raio+100,0,100);
-    n=n+1;
+    //map(n*,raio,raio+100,0,100);
+    if(n<100){
+      n=n+1;
+      r=r+1;
+      g=g-1;
+      b=b-1;
+    }else{
+      n=100;
+      r=255;
+      g=0;
+      b=0;
+    }
     return n;
   }
 
