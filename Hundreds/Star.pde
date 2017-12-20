@@ -9,17 +9,20 @@ class Star {
 
   color cor;
   
+  int n;
+  
   //Métodos
   Star() { 
     x = random(raio,width-raio);
     y = random(raio,height-raio);
-    raio = 50;
+    raio = 30;
     cor = color(255);
     velx = 8;
     vely = 8;
+    n=0;
   }
 
-  Star(float x, float y, float raio, color cor, float velx, float vely) {
+  Star(float x, float y, float raio, color cor, float velx, float vely, int n) {
 
     this.x = x;
     this.y = y;
@@ -27,6 +30,7 @@ class Star {
     this.cor = color(cor);
     this.velx = velx;
     this.vely = vely;
+    this.n=n;
   }
 
   void move() {
@@ -56,32 +60,38 @@ class Star {
     
   }
 
-  boolean colide(Star c) {
+  boolean colide(Star s) {
 
-    return dist(x, y, c.x, c.y) <= raio + c.raio;
+    return dist(x, y, s.x, s.y) <= raio + s.raio;
   }
 
-  void resolverColisao(Star c) {
+  void resolverColisao(Star s) {
 
-    if (x < c.x) {
+    if (x < s.x) {
       velx = -abs(velx);
-      c.velx = abs(c.velx);
+      s.velx = abs(s.velx);
     } else {
       velx = abs(velx);
-      c.velx = -abs(c.velx);
+      s.velx = -abs(s.velx);
     }
 
-    if (y < c.y) {
+    if (y < s.y) {
       vely = -abs(vely);
-      c.vely = abs(c.vely);
+      s.vely = abs(s.vely);
     } else {
       vely = abs(vely);
-      c.vely = -abs(c.vely);
+      s.vely = -abs(s.vely);
     }
   }
   
   void grow(){
     raio=raio+2;
+  }
+  
+  int redgiant() {
+    map(n,raio,raio+100,0,100);
+    n=n+1;
+    return n;
   }
 
   void desenha() { 
