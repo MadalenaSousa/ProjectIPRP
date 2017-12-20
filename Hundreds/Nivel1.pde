@@ -1,3 +1,6 @@
+//NÃO LIGUES A ESTA CLASSE AINDA TENHO DE CER DISTO, EVENTUALMENTE SERÁ UM DOS MEUS NÍVEIS
+
+
 /*class Nivel1 {
   int ns;
   Star [] star;
