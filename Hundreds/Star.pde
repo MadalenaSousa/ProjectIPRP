@@ -98,9 +98,9 @@ class Star {
     //map(n,raio,raio+100,0,100);
     if(n<100){
       n=n+1;
-      r=r+1;
-      g=g-1;
-      b=b-1;
+      r=r+3;
+      g=g-3;
+      b=b-3;
     }else{
       n=100;
       r=255;
