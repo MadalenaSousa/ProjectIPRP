@@ -100,7 +100,7 @@ class Star {
 
   int redgiant() {
     //map(n,raio,raio+100,0,100);
-    if (n<100) { //Enquanto o número for menor que 100, o número cresce e o tom red aumenta
+    if (n<100) { //Enquanto o número for menor que 100, o número cresce e o parametro red aumenta
       n=n+1;
       r=r+3;
       g=g-3;
@@ -120,5 +120,9 @@ class Star {
     noStroke();
     fill(r, g, b);
     ellipse(x, y, 2*raio, 2*raio);
+    textAlign(CENTER, CENTER);
+    fill(0);
+    textSize(20);
+    text(n, x, y);
   }
 }
