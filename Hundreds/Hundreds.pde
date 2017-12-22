@@ -1,4 +1,4 @@
-int ns=4;
+int ns=10;
 Star[] star = new Star[ns];
 PImage background;
 float raio=30;
@@ -24,9 +24,18 @@ void draw() {
       star[i].redgiant();
       soma();
     }
+    if(star[i].colide(star[2])){
+      star[i].resolverColisao(star[2]);
+    }
     star[i].desenha();
+    star[i].colideWall();
     star[i].move();
   }
+  
+  //println(star[2].velx);
+  //println(star[2].vely);
+  println(star[2].x);
+  println(star[2].y);
   
   textAlign(CENTER, CENTER);
   fill(200);
