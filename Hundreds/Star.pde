@@ -12,6 +12,8 @@ class Star {
   int r, g, b, n;
 
   //Métodos
+
+  //Construtor1
   Star() { 
     x = random(raio, width-raio);
     y = random(raio, height-raio);
@@ -25,6 +27,7 @@ class Star {
     n=0;
   }
 
+  //Construtor2
   Star(float x, float y, float raio, float velx, float vely, int r, int g, int b, int n) {
 
     this.x = x;
@@ -39,13 +42,13 @@ class Star {
     this.n=n;
   }
 
-  void move() {
+  void move() { //Incrementa as cordenadas da estrela
 
     x=x+velx;
     y=y+vely;
   }
 
-  void colideWall() {
+  void colideWall() { //Muda o sentido do movimento ao colidir com as paredes
     if (x >= width - raio) { 
       x = width-raio;
       velx = -velx;
@@ -69,15 +72,15 @@ class Star {
 
   boolean colide(Star s) {
 
-    return dist(x, y, s.x, s.y) <= raio + s.raio;
+    return dist(x, y, s.x, s.y) <= raio + s.raio; //Verifica se o a distância entre duas bolas é menor que a soma dos seus raios
   }
 
   void resolverColisao(Star s) {
 
-    if (x < s.x) {
+    if (x < s.x) { //Altera o sentido do movimento, será chamada caso colide seja true
       velx = -abs(velx);
       s.velx = abs(s.velx);
-    } else if(x > s.x) {
+    } else if (x > s.x) {
       velx = abs(velx);
       s.velx = -abs(s.velx);
     }
@@ -85,19 +88,19 @@ class Star {
     if (y < s.y) {
       vely = -abs(vely);
       s.vely = abs(s.vely);
-    } else if(y > s.y) {
+    } else if (y > s.y) {
       vely = abs(vely);
       s.vely = -abs(s.vely);
     }
   }
 
   void grow() {
-    raio=raio+0.8;
+    raio=raio+0.8; //Aumenta o raio
   }
 
   int redgiant() {
     //map(n,raio,raio+100,0,100);
-    if (n<100) {
+    if (n<100) { //Enquanto o número for menor que 100, o número cresce e o tom red aumenta
       n=n+1;
       r=r+3;
       g=g-3;
@@ -108,7 +111,7 @@ class Star {
       g=0;
       b=0;
     }
-    return n;
+    return n; //Devolve o valor do número para depois ser escrito
   }
 
   void desenha() { 
