@@ -24,8 +24,10 @@ void draw() {
       star[i].redgiant();
       soma();
     }
-    if(star[i].colide(star[2])){
-      star[i].resolverColisao(star[2]);
+    for(int j=0; j<ns; j++) {
+      if(star[i].colide(star[j])){
+        star[i].resolverColisao(star[j]);
+      }
     }
     star[i].desenha();
     star[i].colideWall();
