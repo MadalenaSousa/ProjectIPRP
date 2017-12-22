@@ -1,3 +1,4 @@
+//hello world
 int ns=10;
 Star[] star = new Star[ns];
 PImage background;
