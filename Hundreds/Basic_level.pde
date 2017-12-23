@@ -1,10 +1,10 @@
-class Planets {
+class Basic {
   int ns;
   Star[] star;
   float raio;
   int soma;
 
-  Planets() {
+  Basic() {
     ns=10;
     //for (int i=0; i<ns; i++) {
     star = new Star[ns];
@@ -12,7 +12,7 @@ class Planets {
     soma=0;
   }
 
-  Planets(int ns, Star[] star, float raio, int soma) {
+  Basic(int ns, Star[] star, float raio, int soma) {
     this.ns=ns;
     this.star=star;
     this.raio=raio;
