@@ -2,6 +2,7 @@ PImage background;
 float r;
 Basic basic = new Basic();
 float xb, yb;
+PFont f;
 
 void setup() {
   size(1000, 800);
@@ -9,6 +10,7 @@ void setup() {
   r=80;
   xb=width/5;
   yb=height/2;
+  f = createFont ("Bauhaus 93", 100, true);
 
   basic = new Basic();
 
@@ -25,8 +27,8 @@ void draw() {
 
   if (basic.out()) {
     textAlign(CENTER, CENTER);
-    fill(200, 0, 0);
-    textSize(100);
+    fill(200, 0, 255);
+    textFont(f,100);
     text("HUNDREDS 2.0", width/2, height/5);
 
     fill(255);
@@ -40,6 +42,6 @@ void draw() {
 
 void mousePressed() {
   if (dist(mouseX, mouseY, xb, yb)<=r) {
-    basic.out=false;
+    basic.out=!basic.out;
   }
 }
