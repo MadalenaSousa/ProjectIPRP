@@ -37,7 +37,7 @@ class Planets {
     return soma;
   }
 
-  void desenha1() {
+  void desenha2() {
 
     if (soma>=100) { //Se a soma for maior que 100 a função draw só executa o background
       return;
