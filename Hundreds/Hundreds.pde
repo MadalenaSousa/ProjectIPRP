@@ -1,12 +1,12 @@
 PImage background;
-Planets planets = new Planets();
+Basic basic = new Basic();
 
 void setup() {
   size(1000, 800);
   
-  planets = new Planets();
+  basic = new Basic();
   
-  planets.create();
+  basic.create();
   
   //Carregamento do background
   background = loadImage("Background.png");
@@ -17,6 +17,6 @@ void draw() {
   imageMode(CORNER);
   image(background, 0, 0, width, height);
   
-  planets.desenha1();
+  basic.desenha1();
 
 }
