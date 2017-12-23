@@ -5,8 +5,7 @@ class Planets {
   int soma;
 
   Planets() {
-    ns=10;
-    //for (int i=0; i<ns; i++) {
+    ns=5;
     star = new Star[ns];
     raio=30;
     soma=0;
@@ -37,10 +36,15 @@ class Planets {
     return soma;
   }
 
+  /*boolean out(){
+   return out;
+   
+   }*/
+
   void desenha2() {
 
-    if (soma>=100) { //Se a soma for maior que 100 a função draw só executa o background
-      return;
+    if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
+      basic.out=true;
       /*background(0);
        textAlign(CENTER, CENTER);
        fill(200);
@@ -50,17 +54,18 @@ class Planets {
 
     //Estrelas
     for (int i=0; i<ns; i++) {
-      if (mousePressed && dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
+      if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
         star[i].grow();
         star[i].redgiant();
       }
-      soma();
       star[i].colideWall(); //Colisão com as paredes
       star[i].move(); //Movimento
       star[i].desenha(); //Desenha
+
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j])) {
-          if (mousePressed && dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) {
+        if (star[i].colide(star[j]) && i!=j) {
+          if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) {
+            basic.out=true;
             return;
           } else {
             star[i].resolverColisao(star[j]);
@@ -68,7 +73,6 @@ class Planets {
         }
       }
     }
-
     //Texto do número
     textAlign(CENTER, CENTER);
     fill(200);

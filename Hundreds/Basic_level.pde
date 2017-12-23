@@ -7,7 +7,6 @@ class Basic {
 
   Basic() {
     ns=5;
-    //for (int i=0; i<ns; i++) {
     star = new Star[ns];
     raio=30;
     soma=0;
@@ -47,7 +46,7 @@ class Basic {
 
   void desenha1() {
 
-    if (soma>=100) { //Se a soma for maior que 100 a função draw só executa o background
+    if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
       out=true;
       /*background(0);
        textAlign(CENTER, CENTER);
