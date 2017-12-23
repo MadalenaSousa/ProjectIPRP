@@ -1,4 +1,4 @@
-PImage background;
+PImage background, starRed, planet, blackHole2;
 float r;
 Basic basic = new Basic();
 Planets planets = new Planets();
@@ -22,6 +22,9 @@ void setup() {
 
   //Carregamento do background
   background = loadImage("Background.png");
+  starRed =  loadImage("StarRed.png");
+  planet = loadImage("Terra.png");
+  blackHole2 = loadImage("Buraco Negro2.png");
 }
 
 void draw() {
@@ -36,20 +39,33 @@ void draw() {
     text("HUNDREDS 2.0", width/2, height/5);
 
     fill(255);
-    ellipse(xb, yb, 2*r, 2*r);
+    //ellipse(xb, yb, 2*r, 2*r);
+    //filter(BLUR,5);
+    imageMode(CENTER);
+    image(starRed, xb, yb, 2*r+40, 2*r+40);
     textSize(30);
     text("Level 1", xb, yb+r+20);
+
+    filter(BLUR, 0);
+
+    imageMode(CENTER);
+    image(planet, 2*xb, yb, 2*r, 2*r);
+    fill(255);
     text("Level 2", 2*xb, yb+r+20);
+
+    fill(200);
+    imageMode(CENTER);
+    image(blackHole2, 3*xb, yb, 2*r, 2*r);
+    fill(255);
     text("Level 3", 3*xb, yb+r+20);
+
     text("Level 4", 4*xb, yb+r+20);
   } else if (level==1) {
     basic.desenha1();
   } else if (level==2) {
     planets.desenha2();
   } else if (level==3) {
-    
   } else if (level==4) {
-    
   }
 }
 
