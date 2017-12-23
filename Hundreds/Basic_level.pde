@@ -39,10 +39,9 @@ class Basic {
     return soma;
   }
 
-  boolean out(){
-   return out;
-   
-   }
+  boolean out() {
+    return out;
+  }
 
   void desenha1() {
 
@@ -64,18 +63,21 @@ class Basic {
       star[i].colideWall(); //Colisão com as paredes
       star[i].move(); //Movimento
       star[i].desenha(); //Desenha
+    }
 
-      for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i!=j) {
-          if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) {
+    for (int i=0; i<ns; i++) {
+      for (int j=i+1; j<ns; j++) { //Colisão entre estrelas
+        if (star[i].colide(star[j])) {
+          if (/*mousePressed &&*/ dist(mouseX, mouseY, star[i].x, star[i].y)<=star[i].raio) {
             out=true;
-            return;
+            //return;
           } else {
             star[i].resolverColisao(star[j]);
           }
         }
       }
     }
+
     //Texto do número
     textAlign(CENTER, CENTER);
     fill(200);
