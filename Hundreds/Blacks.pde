@@ -89,7 +89,9 @@ void Colisaob(){
         }
       }
     }
-
+    
+    Colisaob();
+    
     //Texto do número
     textAlign(CENTER, CENTER);
     fill(200);
