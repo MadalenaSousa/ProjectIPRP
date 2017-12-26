@@ -67,7 +67,7 @@ void Colisaob(){
   void desenhab() {
 
     if (soma>=100) { 
-      return;
+      basic.out=true;
     }
 
     //Estrelas

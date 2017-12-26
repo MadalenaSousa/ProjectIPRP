@@ -2,6 +2,7 @@ PImage background, starRed, planet, blackHole2;
 float r;
 Basic basic = new Basic();
 Planets planets = new Planets();
+Blacks blacks = new Blacks();
 float xb, yb;
 PFont f;
 int level;
@@ -16,9 +17,11 @@ void setup() {
 
   basic = new Basic();
   planets = new Planets();
+  blacks = new Blacks();
 
   basic.create();
   planets.create();
+  blacks.create();
 
   //Carregamento do background
   background = loadImage("Background.png");
@@ -65,7 +68,7 @@ void draw() {
   } else if (level==2) {
     planets.desenha2();
   } else if (level==3) {
-    
+    blacks.desenhab();
   } else if (level==4) {
   
   }
