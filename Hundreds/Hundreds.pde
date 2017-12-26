@@ -81,10 +81,10 @@ void mousePressed() {
   }  
   if (dist(mouseX, mouseY, 3*xb, yb)<=r) {
     menu.selected=Menu.BLACK;
-    menu.selected=Menu.BLACK;
+    blacks.startLevel();
   }  
   if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
     menu.selected=Menu.FOUR;
-    menu.selected=Menu.FOUR;
+    
   }
 }
