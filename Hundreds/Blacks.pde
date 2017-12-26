@@ -75,7 +75,7 @@ void Colisaob(){
       for (int i=0; i<ns;i++){
     
      
-      if (mousePressed && dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
+      if (/*mousePressed && */dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
         star[i].grow();
         star[i].redgiant();
       }
