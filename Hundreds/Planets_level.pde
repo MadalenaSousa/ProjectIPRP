@@ -1,26 +1,35 @@
 class Planets {
-  int ns;
+  int ns, np;
   Star[] star;
+  Planet planet;
   float raio;
   int soma;
 
   Planets() {
     ns=5;
+    np=8;
     star = new Star[ns];
+    planet = new Planet();
     raio=30;
     soma=0;
   }
 
-  Planets(int ns, Star[] star, float raio, int soma) {
+  Planets(int np, int ns, Star[] star, float raio, int soma, Planet planet) {
+    this.np=np;
     this.ns=ns;
     this.star=star;
     this.raio=raio;
     this.soma=soma;
+    this.planet=planet;
   }
 
   void create() {
     for (int i=0; i<ns; i++) {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
+    }
+    
+    for(int i=0; i<np; i++){
+      
     }
   }
 
@@ -41,10 +50,9 @@ class Planets {
    
    }*/
 
-  void desenha2() {
+  void desenha() {
 
     if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
-      basic.out=true;
       /*background(0);
        textAlign(CENTER, CENTER);
        fill(200);
@@ -65,13 +73,16 @@ class Planets {
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
         if (star[i].colide(star[j]) && i!=j) {
           if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) {
-            basic.out=true;
+
             return;
           } else {
             star[i].resolverColisao(star[j]);
           }
         }
       }
+      
+      planet.desenha();
+      
     }
     //Texto do número
     textAlign(CENTER, CENTER);

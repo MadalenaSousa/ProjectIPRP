@@ -64,7 +64,7 @@ void Colisaob(){
       }         
 }
 
-  void desenhab() {
+  void desenha() {
 
     if (soma>=100) { 
       basic.out=true;
