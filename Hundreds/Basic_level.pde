@@ -43,7 +43,7 @@ class Basic {
     return out;
   }
 
-  void desenha1() {
+  void desenha() {
 
     if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
       out=true;
