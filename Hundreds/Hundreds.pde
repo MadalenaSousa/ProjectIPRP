@@ -13,14 +13,13 @@ void setup() {
   r=80;
   xb=width/5;
   yb=height/2;
-  f = createFont ("Bauhaus 93", 100, true);
-  
+  f = createFont ("Copperplate-Bold", 100, true);
   menu = new Menu(Menu.MENU);
 
   basic = new Basic(menu);
   planets = new Planets();
   blacks = new Blacks();
-
+  
   //Carregamento do background
   background = loadImage("Background.png");
   starRed =  loadImage("StarRed.png");
@@ -68,7 +67,6 @@ void draw() {
   } else if (menu.selected==Menu.BLACK) {
     blacks.desenha();
   } else if (menu.selected==Menu.FOUR) {
-  
   }
 }
 
