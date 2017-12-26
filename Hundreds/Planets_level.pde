@@ -54,7 +54,7 @@ class Planets {
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
         if (star[i].colide(star[j]) && i != j) {
-          if (star[i].isPressed()) {
+          if (star[i].isPressed() || star[j].isPressed()) {
             menu.selected = Menu.MENU;
           } else {
             star[i].resolverColisao(star[j]);
