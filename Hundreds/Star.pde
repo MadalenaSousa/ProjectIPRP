@@ -72,7 +72,11 @@ class Star {
 
   boolean colide(Star s) {
 
-    return dist(x, y, s.x, s.y) <= raio + s.raio; //Verifica se o a distância entre duas bolas é menor que a soma dos seus raios
+    return dist(x, y, s.x, s.y) <= (raio + s.raio); //Verifica se o a distância entre duas bolas é menor que a soma dos seus raios
+  }
+  
+  boolean isPressed() {
+    return dist(this.x, this.y, mouseX, mouseY) <= this.raio;
   }
 
   void resolverColisao(Star s) {

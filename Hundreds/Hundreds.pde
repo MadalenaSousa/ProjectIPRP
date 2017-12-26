@@ -1,11 +1,11 @@
 PImage background, starRed, planet, blackHole2;
 float r;
-Basic basic = new Basic();
-Planets planets = new Planets();
-Blacks blacks = new Blacks();
+Basic basic;
+Planets planets;
+Blacks blacks;
 float xb, yb;
 PFont f;
-int level;
+Menu menu;
 
 void setup() {
   size(1000, 800);
@@ -14,14 +14,12 @@ void setup() {
   xb=width/5;
   yb=height/2;
   f = createFont ("Bauhaus 93", 100, true);
+  
+  menu = new Menu(Menu.MENU);
 
-  basic = new Basic();
+  basic = new Basic(menu);
   planets = new Planets();
   blacks = new Blacks();
-
-  basic.create();
-  planets.create();
-  blacks.create();
 
   //Carregamento do background
   background = loadImage("Background.png");
@@ -35,7 +33,7 @@ void draw() {
   imageMode(CORNER);
   image(background, 0, 0, width, height);
 
-  if (basic.out()) {
+  if (menu.selected == Menu.MENU) {
     textAlign(CENTER, CENTER);
     fill(200, 0, 255);
     textFont(f, 100);
@@ -63,32 +61,32 @@ void draw() {
     text("Level 3", 3*xb, yb+r+20);
 
     text("Level 4", 4*xb, yb+r+20);
-  } else if (level==1) {
+  } else if (menu.selected==Menu.BASIC) {
     basic.desenha();
-  } else if (level==2) {
+  } else if (menu.selected==Menu.PLANETS) {
     planets.desenha();
-  } else if (level==3) {
+  } else if (menu.selected==Menu.BLACK) {
     blacks.desenha();
-  } else if (level==4) {
+  } else if (menu.selected==Menu.FOUR) {
   
   }
 }
 
 void mousePressed() {
   if (dist(mouseX, mouseY, xb, yb)<=r) {
-    level=1;
-    basic.out=false;
+    menu.selected=Menu.BASIC;
+    basic.startLevel();
   }  
   if (dist(mouseX, mouseY, 2*xb, yb)<=r) {
-    level=2;
-    basic.out=false;
+    menu.selected=Menu.PLANETS;
+    //TODO: Start Level Planets
   }  
   if (dist(mouseX, mouseY, 3*xb, yb)<=r) {
-    level=3;
-    basic.out=false;
+    menu.selected=Menu.BLACK;
+    //TODO: Start Level Blacks
   }  
   if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
-    level=4;
-    basic.out=false;
+    menu.selected=Menu.FOUR;
+    //TODO: Start Level Four
   }
 }

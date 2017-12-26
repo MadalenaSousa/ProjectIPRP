@@ -3,28 +3,21 @@ class Basic {
   Star[] star;
   float raio;
   int soma;
-  boolean out;
+  Menu menu;
 
-  Basic() {
-    ns=5;
+  Basic(Menu menu) {
+    ns=8;
     star = new Star[ns];
     raio=30;
     soma=0;
-    out=true;
+    this.menu = menu;
   }
 
-  Basic(int ns, Star[] star, float raio, int soma, boolean out) {
-    this.ns=ns;
-    this.star=star;
-    this.raio=raio;
-    this.soma=soma;
-    this.out=out;
-  }
-
-  void create() {
+  void startLevel() {
     for (int i=0; i<ns; i++) {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
     }
+    soma=0;
   }
 
   //Função de somar
@@ -39,14 +32,10 @@ class Basic {
     return soma;
   }
 
-  boolean out() {
-    return out;
-  }
-
   void desenha() {
 
     if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
-      out=true;
+      menu.selected = Menu.MENU;
       /*background(0);
        textAlign(CENTER, CENTER);
        fill(200);
@@ -56,21 +45,18 @@ class Basic {
 
     //Estrelas
     for (int i=0; i<ns; i++) {
-      if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
+      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
         star[i].grow();
-        star[i].redgiant();
+        star[i].redgiant();       
       }
       star[i].colideWall(); //Colisão com as paredes
       star[i].move(); //Movimento
       star[i].desenha(); //Desenha
-    }
-
-    for (int i=0; i<ns; i++) {
-      for (int j=i+1; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j])) {
-          if (/*mousePressed &&*/ dist(mouseX, mouseY, star[i].x, star[i].y)<=star[i].raio) {
-            out=true;
-            //return;
+      
+      for (int j=0; j<ns; j++) { //Colisão entre estrelas
+        if (star[i].colide(star[j]) && i != j) {
+          if (star[i].isPressed()) {
+            menu.selected = Menu.MENU;
           } else {
             star[i].resolverColisao(star[j]);
           }

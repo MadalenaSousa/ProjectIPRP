@@ -1,7 +1,7 @@
 class Planets {
   int ns, np;
   Star[] star;
-  Planet[] planet;
+  Planet planet;
   float raio;
   int soma;
 
@@ -9,12 +9,12 @@ class Planets {
     ns=5;
     np=8;
     star = new Star[ns];
-    planet = new Planet[np];
+    planet = new Planet();
     raio=30;
     soma=0;
   }
 
-  Planets(int np, int ns, Star[] star, float raio, int soma, Planet[] planet) {
+  Planets(int np, int ns, Star[] star, float raio, int soma, Planet planet) {
     this.np=np;
     this.ns=ns;
     this.star=star;
@@ -53,7 +53,6 @@ class Planets {
   void desenha() {
 
     if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
-      basic.out=true;
       /*background(0);
        textAlign(CENTER, CENTER);
        fill(200);
@@ -74,7 +73,7 @@ class Planets {
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
         if (star[i].colide(star[j]) && i!=j) {
           if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) {
-            basic.out=true;
+
             return;
           } else {
             star[i].resolverColisao(star[j]);
