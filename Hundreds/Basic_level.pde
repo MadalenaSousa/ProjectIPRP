@@ -36,11 +36,6 @@ class Basic {
 
     if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
       menu.selected = Menu.MENU;
-      /*background(0);
-       textAlign(CENTER, CENTER);
-       fill(200);
-       textSize(100);
-       text("You Won!", width/2, height/2);*/
     }
 
     //Estrelas

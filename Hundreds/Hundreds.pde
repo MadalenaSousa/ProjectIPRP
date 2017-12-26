@@ -17,8 +17,8 @@ void setup() {
   menu = new Menu(Menu.MENU);
 
   basic = new Basic(menu);
-  planets = new Planets();
-  blacks = new Blacks();
+  planets = new Planets(menu);
+  blacks = new Blacks(menu);
   
   //Carregamento do background
   background = loadImage("Background.png");
@@ -77,14 +77,14 @@ void mousePressed() {
   }  
   if (dist(mouseX, mouseY, 2*xb, yb)<=r) {
     menu.selected=Menu.PLANETS;
-    //TODO: Start Level Planets
+    planets.startLevel();
   }  
   if (dist(mouseX, mouseY, 3*xb, yb)<=r) {
     menu.selected=Menu.BLACK;
-    //TODO: Start Level Blacks
+    menu.selected=Menu.BLACK;
   }  
   if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
     menu.selected=Menu.FOUR;
-    //TODO: Start Level Four
+    menu.selected=Menu.FOUR;
   }
 }

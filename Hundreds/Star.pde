@@ -36,7 +36,6 @@ class Star {
     this.r=r;
     this.g=g;
     this.b=b;
-    //this.cor = color(r,g,b);
     this.velx = velx;
     this.vely = vely;
     this.n=n;
@@ -103,7 +102,6 @@ class Star {
   }
 
   int redgiant() {
-    //map(n,raio,raio+100,0,100);
     if (n<100) { //Enquanto o número for menor que 100, o número cresce e o parametro red aumenta
       n=n+1;
       r=r+3;
