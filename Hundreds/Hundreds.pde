@@ -13,7 +13,7 @@ void setup() {
   r=80;
   xb=width/5;
   yb=height/2;
-  f = createFont ("Bauhaus 93", 100, true);
+  f = createFont ("Copperplate-Bold", 100, true);
 
   basic = new Basic();
   planets = new Planets();
