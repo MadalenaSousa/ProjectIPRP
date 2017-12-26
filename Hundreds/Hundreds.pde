@@ -29,6 +29,6 @@ void draw() {
   imageMode(CORNER);
   image(background, 0, 0, width, height);
   
-  basic.desenha1();
+
 
 }
