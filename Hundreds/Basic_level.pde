@@ -34,18 +34,13 @@ class Basic {
 
   void desenha() {
 
-    if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
+    if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
       menu.selected = Menu.MENU;
-      /*background(0);
-       textAlign(CENTER, CENTER);
-       fill(200);
-       textSize(100);
-       text("You Won!", width/2, height/2);*/
     }
 
     //Estrelas
     for (int i=0; i<ns; i++) {
-      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
+      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta por cima
         star[i].grow();
         star[i].redgiant();       
       }

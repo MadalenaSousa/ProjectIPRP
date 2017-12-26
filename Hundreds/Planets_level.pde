@@ -4,33 +4,24 @@ class Planets {
   Planet planet;
   float raio;
   int soma;
+  Menu menu;
 
-  Planets() {
-    ns=5;
+  Planets(Menu menu) {
+    ns=8;
     np=8;
     star = new Star[ns];
     planet = new Planet();
     raio=30;
     soma=0;
+    this.menu=menu;
   }
 
-  Planets(int np, int ns, Star[] star, float raio, int soma, Planet planet) {
-    this.np=np;
-    this.ns=ns;
-    this.star=star;
-    this.raio=raio;
-    this.soma=soma;
-    this.planet=planet;
-  }
-
-  void create() {
+  void startLevel() {
     for (int i=0; i<ns; i++) {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
     }
-    
-    for(int i=0; i<np; i++){
-      
-    }
+
+    soma=0;
   }
 
   //Função de somar
@@ -45,24 +36,15 @@ class Planets {
     return soma;
   }
 
-  /*boolean out(){
-   return out;
-   
-   }*/
-
   void desenha() {
 
-    if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
-      /*background(0);
-       textAlign(CENTER, CENTER);
-       fill(200);
-       textSize(100);
-       text("You Won!", width/2, height/2);*/
+    if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
+      menu.selected = Menu.MENU;
     }
 
     //Estrelas
     for (int i=0; i<ns; i++) {
-      if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
+      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta por cima
         star[i].grow();
         star[i].redgiant();
       }
@@ -71,23 +53,21 @@ class Planets {
       star[i].desenha(); //Desenha
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i!=j) {
-          if (/*mousePressed &&*/ dist(star[i].x, star[i].y, mouseX, mouseY)<=star[i].raio) {
-
-            return;
+        if (star[i].colide(star[j]) && i != j) {
+          if (star[i].isPressed()) {
+            menu.selected = Menu.MENU;
           } else {
             star[i].resolverColisao(star[j]);
           }
         }
       }
-      
-      planet.desenha();
-      
-    }
-    //Texto do número
-    textAlign(CENTER, CENTER);
-    fill(200);
-    textSize(100);
-    text(soma(), width/2, height/2);
+    
+    planet.desenha();
   }
+  //Texto do número
+  textAlign(CENTER, CENTER);
+  fill(200);
+  textSize(100);
+  text(soma(), width/2, height/2);
+}
 }
