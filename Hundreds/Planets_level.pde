@@ -7,7 +7,7 @@ class Planets {
   Menu menu;
 
   Planets(Menu menu) {
-    ns=5;
+    ns=8;
     np=8;
     star = new Star[ns];
     planet = new Planet();
@@ -38,13 +38,13 @@ class Planets {
 
   void desenha() {
 
-    if (soma==100) { //Se a soma for maior que 100 a função draw só executa o background
+    if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
       menu.selected = Menu.MENU;
     }
 
     //Estrelas
     for (int i=0; i<ns; i++) {
-      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta premido
+      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta por cima
         star[i].grow();
         star[i].redgiant();
       }
@@ -53,7 +53,7 @@ class Planets {
       star[i].desenha(); //Desenha
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i!=j) {
+        if (star[i].colide(star[j]) && i != j) {
           if (star[i].isPressed()) {
             menu.selected = Menu.MENU;
           } else {
@@ -61,13 +61,13 @@ class Planets {
           }
         }
       }
-
-      planet.desenha();
-    }
-    //Texto do número
-    textAlign(CENTER, CENTER);
-    fill(200);
-    textSize(100);
-    text(soma(), width/2, height/2);
+    
+    planet.desenha();
   }
+  //Texto do número
+  textAlign(CENTER, CENTER);
+  fill(200);
+  textSize(100);
+  text(soma(), width/2, height/2);
+}
 }
