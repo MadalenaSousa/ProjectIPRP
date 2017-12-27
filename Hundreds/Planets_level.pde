@@ -35,10 +35,19 @@ class Planets {
 
   void colision() {
     for (int i=0; i<np; i++) {
-      
+
       if (dist(star[i].x, star[i].y, planet[i].x, planet[i].y)<=star[i].raio+planet[i].rplaneta) {
-        star[i].velx=-1* star[i].velx;
-        star[i].vely=-1* star[i].vely;
+        if (star[i].x < planet[i].x) { //Altera o sentido do movimento
+          star[i].velx = -abs(star[i].velx);
+        } else if (star[i].x > planet[i].x) {
+          star[i].velx = abs(star[i].velx);
+        }
+
+        if (star[i].y < planet[i].y) {
+          star[i].vely = -abs(star[i].vely);
+        } else if (star[i].y > planet[i].y) {
+          star[i].vely = abs(star[i].vely);
+        }
       }
     }
   }
@@ -84,9 +93,9 @@ class Planets {
 
       planet[i].desenha();
     }
-    
+
     colision();
-    
+
     //Texto do número
     textAlign(CENTER, CENTER);
     fill(200);
