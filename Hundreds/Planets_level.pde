@@ -21,32 +21,33 @@ class Planets {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
     }
 
-    planet[0] = new Planet(30, width/9, color(#AA9999), TWO_PI/160);
-    planet[1] = new Planet(40, 2*width/9, color(#DE4310), TWO_PI/260);
-    planet[2] = new Planet(45, 3*width/9, color(#16A1F5), TWO_PI/320);
-    planet[3] = new Planet(35, 4*width/9, color(#E5AD13), TWO_PI/460);
-    planet[4] = new Planet(60, 5*width/9, color(#DECC9D), TWO_PI/600);
-    planet[5] = new Planet(50, 6*width/9, color(#C69066), TWO_PI/700);
-    planet[6] = new Planet(45, 7*width/9, color(#56D8FA), TWO_PI/800);
-    planet[7] = new Planet(45, 8*width/9, color(#0C4EF0), TWO_PI/880);
+    planet[0] = new Planet(30, width/9.0, color(#AA9999), TWO_PI/160);
+    planet[1] = new Planet(40, 2*width/9.0, color(#DE4310), TWO_PI/260);
+    planet[2] = new Planet(45, 3*width/9.0, color(#16A1F5), TWO_PI/320);
+    planet[3] = new Planet(35, 4*width/9.0, color(#E5AD13), TWO_PI/460);
+    planet[4] = new Planet(60, 5*width/9.0, color(#DECC9D), TWO_PI/600);
+    planet[5] = new Planet(50, 6*width/9.0, color(#C69066), TWO_PI/700);
+    planet[6] = new Planet(45, 7*width/9.0, color(#56D8FA), TWO_PI/800);
+    planet[7] = new Planet(45, 8*width/9.0, color(#0C4EF0), TWO_PI/880);
 
     soma=0;
   }
 
   void colision() {
     for (int i=0; i<np; i++) {
+      for (int j=0; j<ns; j++) {
+        if (dist(star[i].x, star[i].y, planet[j].x, planet[j].y)<=star[i].raio+planet[j].rplaneta) {
+          if (star[i].x < planet[j].x) { //Altera o sentido do movimento
+            star[i].velx = -abs(star[i].velx);
+          } else if (star[i].x > planet[j].x) {
+            star[i].velx = abs(star[i].velx);
+          }
 
-      if (dist(star[i].x, star[i].y, planet[i].x, planet[i].y)<=star[i].raio+planet[i].rplaneta) {
-        if (star[i].x < planet[i].x) { //Altera o sentido do movimento
-          star[i].velx = -abs(star[i].velx);
-        } else if (star[i].x > planet[i].x) {
-          star[i].velx = abs(star[i].velx);
-        }
-
-        if (star[i].y < planet[i].y) {
-          star[i].vely = -abs(star[i].vely);
-        } else if (star[i].y > planet[i].y) {
-          star[i].vely = abs(star[i].vely);
+          if (star[i].y < planet[j].y) {
+            star[i].vely = -abs(star[i].vely);
+          } else if (star[i].y > planet[j].y) {
+            star[i].vely = abs(star[i].vely);
+          }
         }
       }
     }
