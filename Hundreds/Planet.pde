@@ -20,12 +20,12 @@ class Planet {
   
   //Construtor2
   Planet(float rplaneta, float rorbita, color cor, float inc) {
-    x=0;
+    this.x=rorbita;
     y=height/2;
     this.rplaneta=rplaneta;
     this.rorbita=rorbita;
     this.cor=cor;
-    alfa=0;
+    alfa=PI/2;
     this.inc=inc;
   }
   
