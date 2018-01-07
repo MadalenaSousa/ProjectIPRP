@@ -3,7 +3,7 @@ class Menu {
   static final int BASIC = 1;
   static final int PLANETS = 2;
   static final int BLACK = 3;
-  static final int FOUR = 4;
+  static final int ALIEN = 4;
   
   int selected;
   
