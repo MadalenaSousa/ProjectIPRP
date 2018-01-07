@@ -83,7 +83,7 @@ class Planets {
       star[i].desenha(); //Desenha
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if ((star[i].colide(star[j]) && i != j) || (planet[i].colide(star[i]) || planet[i].colide(star[j]))) {
+        if ((star[i].colide(star[j]) && i != j) || (planet[i].colide(star[i]) || planet[i].colide(star[j]))) { //HÁ AQUI UM BUG QQ QUANDO ELE TOCA NO SOL POR CIMA OU POR BAIXO
           if (star[i].isPressed() || star[j].isPressed()) {
             println("Perdeu!");
             menu.selected = Menu.MENU;
