@@ -7,8 +7,8 @@ class Planets {
   Menu menu;
 
   Planets(Menu menu) {
-    ns=8;
-    np=8;
+    ns=9;
+    np=9;
     star = new Star[ns];
     planet = new Planet[np];
     raio=30;
@@ -20,15 +20,16 @@ class Planets {
     for (int i=0; i<ns; i++) {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
     }
-
-    planet[0] = new Planet(30, width/9.0, color(#AA9999), TWO_PI/160);
-    planet[1] = new Planet(40, 2*width/9.0, color(#DE4310), TWO_PI/260);
-    planet[2] = new Planet(45, 3*width/9.0, color(#16A1F5), TWO_PI/320);
-    planet[3] = new Planet(35, 4*width/9.0, color(#E5AD13), TWO_PI/460);
-    planet[4] = new Planet(60, 5*width/9.0, color(#DECC9D), TWO_PI/600);
-    planet[5] = new Planet(50, 6*width/9.0, color(#C69066), TWO_PI/700);
-    planet[6] = new Planet(45, 7*width/9.0, color(#56D8FA), TWO_PI/800);
-    planet[7] = new Planet(45, 8*width/9.0, color(#0C4EF0), TWO_PI/880);
+    
+    planet[0] = new Planet(100, 0, color(255,255,0), 0); //Sol
+    planet[1] = new Planet(30, 1.5*width/9, color(#AA9999), TWO_PI/160);
+    planet[2] = new Planet(40, 2.5*width/9, color(#DE4310), TWO_PI/260);
+    planet[3] = new Planet(45, 3.5*width/9, color(#16A1F5), TWO_PI/320);
+    planet[4] = new Planet(35, 4.5*width/9, color(#E5AD13), TWO_PI/460);
+    planet[5] = new Planet(60, 5.5*width/9, color(#DECC9D), TWO_PI/600);
+    planet[6] = new Planet(50, 6.5*width/9, color(#C69066), TWO_PI/700);
+    planet[7] = new Planet(45, 7.5*width/9, color(#56D8FA), TWO_PI/800);
+    planet[8] = new Planet(45, 8.5*width/9, color(#0C4EF0), TWO_PI/880);
 
     soma=0;
   }
@@ -66,7 +67,7 @@ class Planets {
   }
 
   void desenha() {
-
+    
     if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
       menu.selected = Menu.MENU;
     }
@@ -82,7 +83,7 @@ class Planets {
       star[i].desenha(); //Desenha
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i != j) {
+        if ((star[i].colide(star[j]) && i != j) || (planet[i].colide(star[i]) || planet[i].colide(star[j]))) {
           if (star[i].isPressed() || star[j].isPressed()) {
             println("Perdeu!");
             menu.selected = Menu.MENU;
