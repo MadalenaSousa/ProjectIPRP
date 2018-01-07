@@ -1,4 +1,5 @@
-PImage background, starRed, planet, blackHole2;
+PImage background, star, planet, blackHole2;
+Alien alien;
 float r;
 Basic basic;
 Planets planets;
@@ -22,9 +23,10 @@ void setup() {
   
   //Carregamento do background
   background = loadImage("Background.png");
-  starRed =  loadImage("StarRed.png");
+  star =  loadImage("StarRed.png");
   planet = loadImage("Terra.png");
   blackHole2 = loadImage("Buraco Negro2.png");
+  alien = new Alien(4*xb, yb, r-10, color(0,255,0));
 }
 
 void draw() {
@@ -41,7 +43,7 @@ void draw() {
     fill(255);
     
     imageMode(CENTER);
-    image(starRed, xb, yb, 2*r+40, 2*r+40);
+    image(star, xb, yb, 2*r+40, 2*r+40);
     textSize(30);
     text("Level 1", xb, yb+r+20);
 
@@ -54,8 +56,9 @@ void draw() {
     image(blackHole2, 3*xb, yb, 2*r, 2*r);
     fill(255);
     text("Level 3", 3*xb, yb+r+20);
-
+    
     text("Level 4", 4*xb, yb+r+20);
+    alien.desenha();
     
   } else if (menu.selected==Menu.BASIC) {
     basic.desenha();
@@ -63,7 +66,7 @@ void draw() {
     planets.desenha();
   } else if (menu.selected==Menu.BLACK) {
     blacks.desenha();
-  } else if (menu.selected==Menu.FOUR) {
+  } else if (menu.selected==Menu.ALIEN) {
   }
 }
 
@@ -81,7 +84,7 @@ void mousePressed() {
     blacks.startLevel();
   }  
   if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
-    menu.selected=Menu.FOUR;
+    menu.selected=Menu.ALIEN;
     
   }
 }
