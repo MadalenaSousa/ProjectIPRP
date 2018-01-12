@@ -8,6 +8,7 @@ float xb, yb;
 PFont f;
 Menu menu;
 int larg, alt;
+int l;
 
 void setup() {
   size(1000, 800);
@@ -42,10 +43,12 @@ void draw() {
     fill(#35D2E5);
     textFont(f, 100);
     text("YOU WON!", width/2, height/5);
+    
     rectMode(CENTER);
     fill(255);
     rect(width/2, 2.55*height/5, larg, alt, 50);
     rect(width/2, 3.55*height/5, larg, alt, 50);
+    
     fill(0);
     textFont(f, 50);
     text("Next Level", width/2, 2.5*height/5);
@@ -55,10 +58,12 @@ void draw() {
     fill(#35D2E5);
     textFont(f, 100);
     text("YOU LOST!", width/2, height/5);
+    
     rectMode(CENTER);
     fill(255);
     rect(width/2, 2.55*height/5, larg, alt, 50);
     rect(width/2, 3.55*height/5, larg, alt, 50);
+    
     fill(0);
     textFont(f, 50);
     text("Restart Level", width/2, 2.5*height/5);
@@ -90,10 +95,13 @@ void draw() {
     alien.desenha();
   } else if (menu.selected==Menu.BASIC) {
     basic.desenha();
+    l = Menu.BASIC;
   } else if (menu.selected==Menu.PLANETS) {
     planets.desenha();
+    l = Menu.PLANETS;
   } else if (menu.selected==Menu.BLACK) {
     blacks.desenha();
+    l = Menu.BLACK;
   } else if (menu.selected==Menu.ALIEN) {
   }
 }
@@ -117,18 +125,21 @@ void mousePressed() {
     }
   } 
   if (menu.selected == Menu.WON) {
-    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5+alt/2 && mouseY<2.55*height/5-alt/2) {
-      menu.selected = menu.selected+1;
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5-alt/2 && mouseY<2.55*height/5+alt/2) {
+      menu.selected = l+1; //ESTE AINDA NÃO FUNCIONA -> NullPointerException
     }
-    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5+alt/2 && mouseY<3.55*height/5-alt/2) {
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
       menu.selected = Menu.MENU;
     }
   } 
   if (menu.selected == Menu.LOST) {
-    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5+alt/2 && mouseY<2.55*height/5-alt/2) {
-      menu.selected = menu.selected;
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5-alt/2 && mouseY<2.55*height/5+alt/2) {
+      menu.selected = l;
+      basic.startLevel();
+      planets.startLevel();
+      blacks.startLevel();
     }
-    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5+alt/2 && mouseY<3.55*height/5-alt/2) {
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
       menu.selected = Menu.MENU;
     }
   }
