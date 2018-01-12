@@ -20,6 +20,8 @@ class AlienLevel {
   }
 
   void startLevel() {
+    star.clear();
+    
     for (int i=0; i<ns; i++) {
       star.add(new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0));
     }
@@ -44,8 +46,8 @@ class AlienLevel {
         Star s = star.get(i);
         if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) {
          star.remove(i);
-         alien.r++; // AINDA NÃO ESTÁ BEM ESTA CENA ( o objetivo era o ET aumentar sempre que comer a estrela
-       // ns=ns-1;
+         i--;
+         alien.r++;
       }
     }
   }
