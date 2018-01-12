@@ -40,9 +40,10 @@ class AlienLevel {
 
  void Colisao() {
 
-      for (Star s : star) {
+      for (int i=0; i<star.size(); i++) {
+        Star s = star.get(i);
         if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) {
-         star.remove(s);
+         star.remove(i);
          alien.r++; // AINDA NÃO ESTÁ BEM ESTA CENA ( o objetivo era o ET aumentar sempre que comer a estrela
        // ns=ns-1;
       }
