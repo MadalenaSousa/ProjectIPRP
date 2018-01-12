@@ -34,8 +34,8 @@ class Basic {
 
   void desenha() {
 
-    if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
-      menu.selected = Menu.MENU;
+    if (soma==100) { //Se a soma for maior que 100 ganha
+      menu.selected = Menu.WON;
     }
 
     //Estrelas
@@ -52,7 +52,7 @@ class Basic {
         if (star[i].colide(star[j]) && i != j) {
           if (star[i].isPressed() || star[j].isPressed()) {
             println("Perdeu!");
-            menu.selected = Menu.MENU;
+            menu.selected = Menu.LOST;
           } else {
             star[i].resolverColisao(star[j]);
           }

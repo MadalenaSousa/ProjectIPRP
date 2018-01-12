@@ -4,6 +4,8 @@ class Menu {
   static final int PLANETS = 2;
   static final int BLACK = 3;
   static final int ALIEN = 4;
+  static final int WON = 5;
+  static final int LOST = 6;
   
   int selected;
   

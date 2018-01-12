@@ -6,20 +6,10 @@ class Planet {
   color cor;
   float alfa;
   float inc;
+  boolean anel;
 
-  //Construtor1
-  Planet() {
-    x=0;
-    y=height/2;
-    rplaneta=50;
-    rorbita=height/2;
-    cor=color(0, 0, 255);  
-    alfa=0;
-    inc=TWO_PI/1000;
-  }
-
-  //Construtor2
-  Planet(float rplaneta, float rorbita, color cor, float inc) {
+  //Construtor
+  Planet(float rplaneta, float rorbita, color cor, float inc, boolean anel) {
     this.x=rorbita;
     y=height/2;
     this.rplaneta=rplaneta;
@@ -27,9 +17,15 @@ class Planet {
     this.cor=cor;
     alfa=PI/2;
     this.inc=inc;
+    this.anel=anel;
   }
 
   //Métodos
+  
+  void anel() {
+    if(anel) {
+    }
+  }
 
   void move() {
     alfa=alfa+inc;
