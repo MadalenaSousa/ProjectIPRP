@@ -1,14 +1,14 @@
 PImage background, star, planet, blackHole2;
-Alien alien;
-float r;
+PFont f;
 Basic basic;
 Planets planets;
 Blacks blacks;
+Alien alien;
 float xb, yb;
-PFont f;
-Menu menu;
+float r;
 int larg, alt;
 int l;
+Menu menu;
 
 void setup() {
   size(1000, 800);
@@ -20,17 +20,18 @@ void setup() {
   menu = new Menu(Menu.MENU);
   larg = 300;
   alt = 100;
-
+  
+  //Criação dos Níveis
   basic = new Basic(menu);
   planets = new Planets(menu);
   blacks = new Blacks(menu);
 
-  //Carregamento do background
+  //Imagens do Menu Principal
   background = loadImage("Background.png");
   star =  loadImage("StarRed.png");
   planet = loadImage("Terra.png");
   blackHole2 = loadImage("Buraco Negro2.png");
-  alien = new Alien(4*xb, yb, r-10, color(0, 255, 0));
+  alien = new Alien(4*xb, yb, r-10, color(#0CEDBE));
 }
 
 void draw() {
