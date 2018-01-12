@@ -1,6 +1,6 @@
 class AlienLevel {
   int ns;
-  Star[] star;
+  ArrayList<Star> star;
   Alien alien;
   float raio,r,x,y;
   int soma;
@@ -8,7 +8,7 @@ class AlienLevel {
 
   AlienLevel(Menu menu) {
     ns=9;
-    star = new Star[ns];
+    star = new ArrayList<Star>();
     r=50;
     x=random(r,width-r);
     y=random(r,height-r);
@@ -21,7 +21,7 @@ class AlienLevel {
 
   void startLevel() {
     for (int i=0; i<ns; i++) {
-      star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
+      star.add(new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0));
     }
     soma=0;
   }
@@ -31,8 +31,8 @@ class AlienLevel {
 
     soma=0;
 
-    for (int i=0; i<ns; i++) {
-      soma=soma+star[i].n;
+    for (Star s : star) {
+      soma=soma+s.n;
     }
 
     return soma;
@@ -40,9 +40,10 @@ class AlienLevel {
 
  void Colisao() {
 
-      for (int i=0; i<ns; i++) {
-        if (dist(star[i].x, star[i].y, alien.x, alien.y)<=star[i].raio+alien.r) {
-         star[i].raio=0;
+      for (int i=0; i<star.size(); i++) {
+        Star s = star.get(i);
+        if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) {
+         star.remove(i);
          alien.r++; // AINDA NÃO ESTÁ BEM ESTA CENA ( o objetivo era o ET aumentar sempre que comer a estrela
        // ns=ns-1;
       }
@@ -57,22 +58,22 @@ class AlienLevel {
 
     //Estrelas
 
-    for (int i=0; i<ns; i++) {
-      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta por cima
-        star[i].grow();
-        star[i].redgiant();
+    for (Star s : star) {
+      if (s.isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta por cima
+        s.grow();
+        s.redgiant();
       }
-      star[i].colideWall(); //Colisão com as paredes
-      star[i].move(); //Movimento
-      star[i].desenha(); //Desenha
+      s.colideWall(); //Colisão com as paredes
+      s.move(); //Movimento
+      s.desenha(); //Desenha
       
-      for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i!=j) {
-          if (star[i].isPressed() || star[j].isPressed()) {
+      for (Star s1 : star) { //Colisão entre estrelas
+        if (s.colide(s1) && s!=s1) {
+          if (s.isPressed() || s1.isPressed()) {
             println("Perdeu!");
             menu.selected = Menu.MENU;
           } else {
-            star[i].resolverColisao(star[j]);
+            s.resolverColisao(s1);
           }
         }
       }
