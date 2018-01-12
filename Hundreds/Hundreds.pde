@@ -4,6 +4,7 @@ Basic basic;
 Planets planets;
 Blacks blacks;
 Alien alien;
+AlienLevel aliens;
 float xb, yb;
 float r;
 int larg, alt;
@@ -25,6 +26,7 @@ void setup() {
   basic = new Basic(menu);
   planets = new Planets(menu);
   blacks = new Blacks(menu);
+  aliens = new AlienLevel(menu);
 
   //Imagens do Menu Principal
   background = loadImage("Background.png");
@@ -104,6 +106,9 @@ void draw() {
     blacks.desenha();
     l = Menu.BLACK;
   } else if (menu.selected==Menu.ALIEN) {
+    aliens.desenha();
+    l=Menu.ALIEN;
+    
   }
 }
 
@@ -123,6 +128,7 @@ void mousePressed() {
     }  
     if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
       menu.selected=Menu.ALIEN;
+      aliens.startLevel();
     }
   } 
   if (menu.selected == Menu.WON) {
