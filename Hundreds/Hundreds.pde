@@ -99,7 +99,7 @@ void draw() {
 }
 
 void mousePressed() {
-  if (menu.selected == menu.MENU) {
+  if (menu.selected == Menu.MENU) {
     if (dist(mouseX, mouseY, xb, yb)<=r) {
       menu.selected=Menu.BASIC;
       basic.startLevel();
@@ -115,12 +115,18 @@ void mousePressed() {
     if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
       menu.selected=Menu.ALIEN;
     }
-  } else if(menu.selected == menu.WON) {
-    if(mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5+alt/2 && mouseY<2.55*height/5-alt/2) {
+  } else if (menu.selected == Menu.WON) {
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5+alt/2 && mouseY<2.55*height/5-alt/2) {
       menu.selected = menu.selected+1;
     }
-    if(mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5+alt/2 && mouseY<3.55*height/5-alt/2) {
-      menu.selected = menu.MENU;
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5+alt/2 && mouseY<3.55*height/5-alt/2) {
+      menu.selected = Menu.MENU;
+    }
+  } else if (menu.selected == Menu.LOST) {
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5+alt/2 && mouseY<2.55*height/5-alt/2) {
+      menu.selected = menu.selected;
+    }
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5+alt/2 && mouseY<3.55*height/5-alt/2) {
+      menu.selected = Menu.MENU;
     }
   }
-}
