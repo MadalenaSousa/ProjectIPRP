@@ -70,7 +70,7 @@ class Blacks {
   void desenha() {
 
     if (soma>=100) { 
-      menu.selected = Menu.MENU;
+      menu.selected = Menu.WON;
     }
 
     //Estrelas
@@ -88,7 +88,7 @@ class Blacks {
         if (star[i].colide(star[j]) && i!=j) {
           if (star[i].isPressed() || star[j].isPressed()) {
             println("Perdeu!");
-            menu.selected = Menu.MENU;
+            menu.selected = Menu.LOST;
           } else {
             star[i].resolverColisao(star[j]);
           }
