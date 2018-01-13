@@ -30,21 +30,6 @@ class Planet {
     return dist(x, y, s.x, s.y) <= (rplaneta + s.raio); //Verifica se o a distância entre duas bolas é menor que a soma dos seus raios
   }
 
-  void resolverColisao(Star s) {
-
-    if (x < s.x) { //Altera o sentido do movimento, será chamada caso colide seja true
-      s.velx = abs(s.velx);
-    } else if (x > s.x) {
-      s.velx = -abs(s.velx);
-    }
-
-    if (y < s.y) {
-      s.vely = abs(s.vely);
-    } else if (y > s.y) {
-      s.vely = -abs(s.vely);
-    }
-  }
-
   void desenha() {
     if (ring) {
       stroke(cor-100);

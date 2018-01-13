@@ -34,24 +34,21 @@ class PlanetsLevel {
     soma=0;
   }
 
-  void colision() {
-    for (int i=0; i<ns; i++) {
-      for (int j=0; j<np; j++) {
-        if (dist(star[i].x, star[i].y, planet[j].x, planet[j].y)<=star[i].raio+planet[j].rplaneta) {
-          if (star[i].x < planet[j].x) { //Altera o sentido do movimento
-            star[i].velx = -abs(star[i].velx);
-          } else if (star[i].x > planet[j].x) {
-            star[i].velx = abs(star[i].velx);
-          }
-
-          if (star[i].y < planet[j].y) {
-            star[i].vely = -abs(star[i].vely);
-          } else if (star[i].y > planet[j].y) {
-            star[i].vely = abs(star[i].vely);
-          }
-        }
-      }
+  void solvePlanetColision(Planet planet, Star star) {
+    if (star.x <= planet.x) { //Altera o sentido do movimento
+      star.velx = -abs(star.velx);
+    } else {
+      star.velx = abs(star.velx);
     }
+
+    if (star.y <= planet.y) {
+      star.vely = -abs(star.vely);
+    } else {
+      star.vely = abs(star.vely);
+    }
+
+    star.move();
+    star.desenha();
   }
 
   //Função de somar
@@ -71,6 +68,10 @@ class PlanetsLevel {
     if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
       menu.selected = Menu.WON;
     }
+    
+    for(int i=0; i<np; i++) {
+      planet[i].desenha();
+    }
 
     //Estrelas
     for (int i=0; i<ns; i++) {
@@ -78,9 +79,9 @@ class PlanetsLevel {
         star[i].grow();
         star[i].redgiant();
       }
-      star[i].colideWall(); //Colisão com as paredes
       star[i].move(); //Movimento
-      star[i].desenha(); //Desenha
+      star[i].desenha();//Desenha
+      star[i].colideWall(); //Colisão com as paredes
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
         if (star[i].colide(star[j]) && i != j) {
@@ -91,25 +92,21 @@ class PlanetsLevel {
             star[i].resolverColisao(star[j]);
           }
         }
+      }
 
-        for (int z=0; z<np; z++) {
-          if (planet[z].colide(star[i])) {
-            if (star[i].isPressed()) {
-              println("Perdeu!");
-              menu.selected = Menu.LOST;
-            } else {
-              planet[z].resolverColisao(star[i]);
-            }
+      for (int z=0; z<np; z++) {
+        if (planet[z].colide(star[i])) {
+          if (star[i].isPressed()) {
+            println("Perdeu!");
+            menu.selected = Menu.LOST;
+          } else {
+            solvePlanetColision(planet[z], star[i]);
           }
         }
       }
+      
     }
 
-    for (int i=0; i<np; i++) {
-      planet[i].desenha();
-    }
-
-    colision();
 
     //Texto do número
     textAlign(CENTER, CENTER);
