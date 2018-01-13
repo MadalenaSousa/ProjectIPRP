@@ -1,4 +1,4 @@
-PImage background, star, blackHole2;
+PImage background, star, blackHole;
 PFont f;
 Alien alien;
 Planet planet;
@@ -35,7 +35,7 @@ void setup() {
   star =  loadImage("StarRed.png");
   planet = new Planet(r-10, 2*xb, color(#0C4EF0),PI/2, 0, true);
   alien = new Alien(3*xb, yb, r-10);
-  blackHole2 = loadImage("Buraco Negro2.png");
+  blackHole = loadImage("Buraco Negro.png");
 }
 
 void draw() {
@@ -75,7 +75,20 @@ void draw() {
     textFont(f, 40);
     text("Restart Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
-  } else if (menu.selected == Menu.MENU) {
+  } else if (menu.selected == Menu.FINAL){
+    textAlign(CENTER, CENTER);
+    fill(#71DBAC);
+    textFont(f, 170);
+    text("YOU WON!", width/2, height/3);
+
+    rectMode(CENTER);
+    fill(255);
+    noStroke();
+    rect(width/2, 3.55*height/5, larg, alt, 50);
+    fill(0);
+    textFont(f, 40);
+    text("Menu", width/2, 3.5*height/5);
+  }else if (menu.selected == Menu.MENU) {
     textAlign(CENTER, CENTER);
     fill(200, 0, 255);
     textFont(f, 100);
@@ -97,7 +110,7 @@ void draw() {
     
     fill(255);
     imageMode(CENTER);
-    image(blackHole2, 4*xb, yb, 2*r, 2*r);
+    image(blackHole, 4*xb, yb, 2*r, 2*r);
     fill(255);
     text("Level 4", 4*xb, yb+r+20);
   } else if (menu.selected==Menu.BASIC) {
@@ -154,6 +167,11 @@ void mousePressed() {
       blacks.startLevel();
       aliens.startLevel();
     }
+    if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
+      menu.selected = Menu.MENU;
+    }
+  }
+    if (menu.selected == Menu.FINAL) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
       menu.selected = Menu.MENU;
     }

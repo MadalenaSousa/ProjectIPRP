@@ -6,6 +6,7 @@ class Menu {
   static final int BLACK = 4;
   static final int WON = 5;
   static final int LOST = 6;
+  static final int FINAL = 7;
   
   int selected;
   
