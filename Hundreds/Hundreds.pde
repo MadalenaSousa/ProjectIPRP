@@ -10,6 +10,7 @@ float xb, yb;
 float r;
 int larg, alt;
 int l;
+
 Menu menu;
 
 void setup() {
