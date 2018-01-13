@@ -18,7 +18,7 @@ class PlanetsLevel {
 
   void startLevel() {
     for (int i=0; i<ns; i++) {
-      star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
+      star[i] = new Star();
     }
 
     planet[0] = new Planet(100, 0, color(255, 255, 0), PI/2, 0, false); //Sol

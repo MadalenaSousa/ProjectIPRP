@@ -24,7 +24,7 @@ class AlienLevel {
     star.clear(); 
     //Adicionar estrelas
     for (int i=0; i<ns; i++) {
-      star.add(new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0));
+      star.add(new Star());
     }
     soma=0;
   }
