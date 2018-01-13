@@ -9,7 +9,7 @@ class Planet {
   boolean ring;
 
   //Construtor
-  Planet(float rplaneta, float rorbita, color cor,float alfa, float inc, boolean ring) {
+  Planet(float rplaneta, float rorbita, color cor, float alfa, float inc, boolean ring) {
     this.x=rorbita;
     y=height/2;
     this.rplaneta=rplaneta;
@@ -34,7 +34,7 @@ class Planet {
     if (ring) {
       stroke(cor-100);
       noFill();
-      strokeWeight(5);
+      strokeWeight(10);
       ellipse(x, y, 3*rplaneta, rplaneta/2);
     }
 
@@ -51,7 +51,7 @@ class Planet {
     if (ring) {
       stroke(cor-100);
       noFill();
-      strokeWeight(5);
+      strokeWeight(10);
       arc(x, y, 3*rplaneta, rplaneta/2, PI/6, PI-PI/6);
     }
   }
