@@ -17,9 +17,9 @@ void setup() {
   r=80;
   xb=width/5;
   yb=height/2;
-  f = createFont ("Bauhaus 93", 100, true);
+  f = createFont ("Copperplate-Bold", 100, true);
   menu = new Menu(Menu.MENU);
-  larg = 300;
+  larg = 305;
   alt = 100;
 
   //Criação dos Níveis
@@ -54,7 +54,7 @@ void draw() {
     rect(width/2, 3.55*height/5, larg, alt, 50);
 
     fill(0);
-    textFont(f, 50);
+    textFont(f, 40);
     text("Next Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
   } else if (menu.selected == Menu.LOST) {
@@ -69,7 +69,7 @@ void draw() {
     rect(width/2, 3.55*height/5, larg, alt, 50);
 
     fill(0);
-    textFont(f, 50);
+    textFont(f, 40);
     text("Restart Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
   } else if (menu.selected == Menu.MENU) {

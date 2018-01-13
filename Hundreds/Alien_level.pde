@@ -48,8 +48,12 @@ class AlienLevel {
          star.remove(i);
          i--;
          alien.r++;
-      }
+        
     }
+     if (star.size()==0) {
+            println("Perdeu!");
+            menu.selected = Menu.LOST;}
+          }
   }
 
   void desenha() {
