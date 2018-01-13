@@ -55,7 +55,7 @@ class AlienLevel {
   void desenha() {
 
     if (soma>=100) { 
-      menu.selected = Menu.MENU;
+      menu.selected = Menu.WON;
     }
 
     //Estrelas
@@ -73,7 +73,7 @@ class AlienLevel {
         if (s.colide(s1) && s!=s1) {
           if (s.isPressed() || s1.isPressed()) {
             println("Perdeu!");
-            menu.selected = Menu.MENU;
+            menu.selected = Menu.LOST;
           } else {
             s.resolverColisao(s1);
           }
