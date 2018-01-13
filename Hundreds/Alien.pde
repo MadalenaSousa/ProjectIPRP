@@ -32,7 +32,8 @@ class Alien {
 
     ellipseMode(CENTER);
     stroke(0);
-    arc(x,y,r-10, r-10, PI/4, PI-PI/4);
+    fill(255,0,0);
+    ellipse(x,y+r/2+20,r/2, r-10);
     fill(cor);
     ellipse(x, y, 2*r, 2*r);
     fill(255);
