@@ -2,7 +2,7 @@ class BlacksLevel {
   PImage blackHole;
   int ns;
   Star[] star;
-  float raio, raiob, xb, yb, xb2, velxb, velyb;
+  float raio, raiob, xb, yb, xb2, x, y;
   int soma;
   Menu menu;
 
@@ -10,20 +10,24 @@ class BlacksLevel {
     ns=3;
     star = new Star[ns];
     raio=30;
+    x=random(raio, width-raio);
+    y=random(raio, height-raio);
+    if (dist(x, y, xb, yb)<=raiob || dist(x, y, 3*xb, yb)<=raiob) {
+      x=random(raio, width-raio);
+      y=random(raio, height-raio);
+    }
     raiob=50;
     xb= 250;
     yb=height/2;
     xb2=750;
     soma=0;
-    velxb=8;
-    velyb=8;
     blackHole = loadImage("Buraco Negro.png");
     this.menu=menu;
   }
 
   void startLevel() {
     for (int i=0; i<ns; i++) {
-      star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
+      star[i] = new Star(x, y, raio, 8, 8, 255, 255, 255, 0);
     }
 
     soma=0;
@@ -76,7 +80,7 @@ class BlacksLevel {
       star[i].colideWall(); //Colisão com as paredes
       star[i].move(); //Movimento
       star[i].desenha(); //Desenha
-      
+
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
         if (star[i].colide(star[j]) && i!=j) {
           if (star[i].isPressed() || star[j].isPressed()) {
@@ -102,9 +106,9 @@ class BlacksLevel {
     fill(0);
     imageMode(CENTER);
     image(blackHole, xb, yb, 2*raiob, 2*raiob);
-     image(blackHole, xb*3, yb, 2*raiob, 2*raiob);
-   // stroke(255);
+    image(blackHole, xb*3, yb, 2*raiob, 2*raiob);
+    // stroke(255);
     //ellipse(xb, yb, 2*raiob, 2*raiob);
-   // ellipse(xb2, yb, 2*raiob, 2*raiob);
+    // ellipse(xb2, yb, 2*raiob, 2*raiob);
   }
 }
