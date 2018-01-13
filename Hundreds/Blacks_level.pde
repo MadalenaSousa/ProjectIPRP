@@ -1,11 +1,11 @@
-class Blacks {
+class BlacksLevel {
   int ns;
   Star[] star;
   float raio, raiob, xb, yb, xb2, velxb, velyb;
   int soma;
   Menu menu;
 
-  Blacks(Menu menu) {
+  BlacksLevel(Menu menu) {
     ns=3;
     star = new Star[ns];
     raio=30;

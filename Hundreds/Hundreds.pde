@@ -1,9 +1,10 @@
-PImage background, star, planet, blackHole2;
+PImage background, star, blackHole2;
 PFont f;
-Basic basic;
-Planets planets;
-Blacks blacks;
 Alien alien;
+Planet planet;
+BasicLevel basic;
+PlanetsLevel planets;
+BlacksLevel blacks;
 AlienLevel aliens;
 float xb, yb;
 float r;
@@ -23,16 +24,16 @@ void setup() {
   alt = 100;
 
   //Criação dos Níveis
-  basic = new Basic(menu);
-  planets = new Planets(menu);
+  basic = new BasicLevel(menu);
+  planets = new PlanetsLevel(menu);
   aliens = new AlienLevel(menu);
-  blacks = new Blacks(menu);
+  blacks = new BlacksLevel(menu);
 
 
   //Imagens do Menu Principal
   background = loadImage("Background.png");
   star =  loadImage("StarRed.png");
-  planet = loadImage("Terra.png");
+  planet = new Planet(r-10, 2*xb, color(#0C4EF0),PI/2, 0, true);
   alien = new Alien(3*xb, yb, r-10);
   blackHole2 = loadImage("Buraco Negro2.png");
 }
@@ -50,6 +51,7 @@ void draw() {
 
     rectMode(CENTER);
     fill(255);
+    noStroke();
     rect(width/2, 2.55*height/5, larg, alt, 50);
     rect(width/2, 3.55*height/5, larg, alt, 50);
 
@@ -65,6 +67,7 @@ void draw() {
 
     rectMode(CENTER);
     fill(255);
+    noStroke();
     rect(width/2, 2.55*height/5, larg, alt, 50);
     rect(width/2, 3.55*height/5, larg, alt, 50);
 
@@ -79,20 +82,20 @@ void draw() {
     text("HUNDREDS 2.0", width/2, height/5);
 
     fill(255);
-
     imageMode(CENTER);
     image(star, xb, yb, 2*r+40, 2*r+40);
     textSize(30);
     text("Level 1", xb, yb+r+20);
-
-    imageMode(CENTER);
-    image(planet, 2*xb, yb, 2*r, 2*r);
+  
     fill(255);
     text("Level 2", 2*xb, yb+r+20);
-
+    planet.desenha();
+    
+    fill(255);
     text("Level 3", 3*xb, yb+r+20);
     alien.desenha();
-
+    
+    fill(255);
     imageMode(CENTER);
     image(blackHole2, 4*xb, yb, 2*r, 2*r);
     fill(255);

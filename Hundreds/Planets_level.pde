@@ -1,4 +1,4 @@
-class Planets {
+class PlanetsLevel {
   int ns, np;
   Star[] star;
   Planet[] planet;
@@ -6,7 +6,7 @@ class Planets {
   int soma;
   Menu menu;
 
-  Planets(Menu menu) {
+  PlanetsLevel(Menu menu) {
     ns=9;
     np=9;
     star = new Star[ns];
@@ -21,15 +21,15 @@ class Planets {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
     }
     
-    planet[0] = new Planet(100, 0, color(255,255,0), 0, false); //Sol
-    planet[1] = new Planet(30, 1.5*width/9, color(#AA9999), TWO_PI/150, false);
-    planet[2] = new Planet(40, 2.5*width/9, color(#DE4310), TWO_PI/250, false);
-    planet[3] = new Planet(45, 3.5*width/9, color(#16A1F5), TWO_PI/310, false);
-    planet[4] = new Planet(35, 4.5*width/9, color(#E5AD13), TWO_PI/450, false);
-    planet[5] = new Planet(60, 5.5*width/9, color(#DECC9D), TWO_PI/590, false);
-    planet[6] = new Planet(50, 6.5*width/9, color(#C69066), TWO_PI/690, false);
-    planet[7] = new Planet(45, 7.5*width/9, color(#56D8FA), TWO_PI/790, false);
-    planet[8] = new Planet(45, 8.5*width/9, color(#0C4EF0), TWO_PI/870, false);
+    planet[0] = new Planet(100, 0, color(255,255,0),PI/2, 0, false); //Sol
+    planet[1] = new Planet(30, 1.5*width/9, color(#AA9999),random(PI/4,3*PI/4), TWO_PI/80, false);
+    planet[2] = new Planet(40, 2.5*width/9, color(#DE4310),random(PI/4,3*PI/4), TWO_PI/180, false);
+    planet[3] = new Planet(45, 3.5*width/9, color(#16A1F5),random(PI/4,3*PI/4), TWO_PI/240, false);
+    planet[4] = new Planet(35, 4.5*width/9, color(#E5AD13),random(PI/4,3*PI/4), TWO_PI/380, false);
+    planet[5] = new Planet(60, 5.5*width/9, color(#DECC9D),random(PI/4,3*PI/4), TWO_PI/520, true);
+    planet[6] = new Planet(50, 6.5*width/9, color(#C69066),random(PI/4,3*PI/4), TWO_PI/620, false);
+    planet[7] = new Planet(45, 7.5*width/9, color(#56D8FA),random(PI/4,3*PI/4), TWO_PI/720, false);
+    planet[8] = new Planet(45, 8.5*width/9, color(#0C4EF0),random(PI/4,3*PI/4), TWO_PI/800, true);
 
     soma=0;
   }
