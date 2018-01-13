@@ -1,4 +1,5 @@
 class AlienLevel {
+
   int ns;
   ArrayList<Star> star;
   Alien alien;
@@ -20,8 +21,8 @@ class AlienLevel {
   }
 
   void startLevel() {
-    star.clear();
-    
+    star.clear(); 
+    //Adicionar estrelas
     for (int i=0; i<ns; i++) {
       star.add(new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0));
     }
@@ -42,14 +43,14 @@ class AlienLevel {
 
  void Colisao() {
 
-      for (int i=0; i<star.size(); i++) {
-        Star s = star.get(i);
-        if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) {
-         star.remove(i);
-         i--;
-         alien.r++;
-        
+    for (int i=0; i<star.size(); i++) {
+      Star s = star.get(i);
+      if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) { // se houver colisão entre a estrela e o Alien
+       star.remove(i);//estrela em causa desaparece
+       i--;
+       alien.r++;//o raio do Alien aumenta     
     }
+    // caso o numero de estrelas seja = 0, o jogador perde o nível
      if (star.size()==0) {
             println("Perdeu!");
             menu.selected = Menu.LOST;}
@@ -74,11 +75,11 @@ class AlienLevel {
       s.desenha(); //Desenha
       
       for (Star s1 : star) { //Colisão entre estrelas
-        if (s.colide(s1) && s!=s1) {
-          if (s.isPressed() || s1.isPressed()) {
-            println("Perdeu!");
+        if (s.colide(s1) && s!=s1) {// se duas estrelas diferentes colidirem
+          if (s.isPressed() || s1.isPressed()) { // se o rato estiver sobre uma delas
+            println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
-          } else {
+          } else { // caso contrária colidem e o jogo continua
             s.resolverColisao(s1);
           }
         }

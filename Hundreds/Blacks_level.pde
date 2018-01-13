@@ -21,6 +21,7 @@ class Blacks {
 
 
   void startLevel() {
+    
     for (int i=0; i<ns; i++) {
       star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
     }
@@ -77,12 +78,12 @@ class Blacks {
       star[i].desenha(); //Desenha
       
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i!=j) {
-          if (star[i].isPressed() || star[j].isPressed()) {
-            println("Perdeu!");
+        if (star[i].colide(star[j]) && i!=j) { // Se duas estrelas diferentes colidirem
+          if (star[i].isPressed() || star[j].isPressed()) { // e se o rato estiver sobre uma delas
+            println("Perdeu!");//O jogador perde o nível 
             menu.selected = Menu.LOST;
           } else {
-            star[i].resolverColisao(star[j]);
+            star[i].resolverColisao(star[j]); // caso contrário, as estrelas colidem e o jogo continua
           }
         }
       }

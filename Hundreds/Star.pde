@@ -70,7 +70,7 @@ class Star {
   }
 
   boolean isPressed() {
-    return dist(this.x, this.y, mouseX, mouseY) <= this.raio;
+    return dist(this.x, this.y, mouseX, mouseY) <= this.raio;//Verifica se o a distância entre a estrela e o rato é menor ou igual que o seu raio
   }
 
   boolean colide(Star s) {

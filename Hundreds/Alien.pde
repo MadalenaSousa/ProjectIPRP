@@ -1,11 +1,11 @@
 class Alien {
-  //Atributos
+//Atributos
   float x, y;
   float r;
   color cor;
   float velx,vely;
 
-  //Construtor1
+//Construtor1
   Alien(float x, float y, float r) {
     this.x=x;
     this.y=y;
@@ -15,11 +15,12 @@ class Alien {
     vely=2;
   }
   
+// Movimento do Alien
   void move(){
     y=y+vely;
     x=x+velx;}
     
-    
+// Colisão com as paredes  
   void parede(){
       if(x>=width-r || x<= r){
         velx=-velx;
