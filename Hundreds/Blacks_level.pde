@@ -19,14 +19,6 @@ class Blacks {
     this.menu=menu;
   }
 
-  Blacks(int ns, Star[] star, float raio, int soma) {
-    this.ns=ns;
-    this.star=star;
-    this.raio=raio;
-    this.soma=soma;
-  }
-
-
 
   void startLevel() {
     for (int i=0; i<ns; i++) {

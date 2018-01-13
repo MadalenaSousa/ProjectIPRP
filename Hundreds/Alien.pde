@@ -6,19 +6,21 @@ class Alien {
   float velx,vely;
 
   //Construtor1
-  Alien(float x, float y, float r, color cor) {
+  Alien(float x, float y, float r) {
     this.x=x;
     this.y=y;
     this.r=r;
-    this.cor=cor;
-    velx=1;
-    vely=1;
+    cor=color(#0CEDBE);
+    velx=2;
+    vely=2;
   }
   
   void move(){
     y=y+vely;
     x=x+velx;}
-    void parede(){
+    
+    
+  void parede(){
       if(x>=width-r || x<= r){
         velx=-velx;
       }
@@ -30,9 +32,7 @@ class Alien {
 
     ellipseMode(CENTER);
     stroke(0);
-    fill(255, 0, 0);
     arc(x,y,r-10, r-10, PI/4, PI-PI/4);
-    //ellipse(x, y+r/2+20, r/2, r);
     fill(cor);
     ellipse(x, y, 2*r, 2*r);
     fill(255);

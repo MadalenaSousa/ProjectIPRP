@@ -25,15 +25,16 @@ void setup() {
   //Criação dos Níveis
   basic = new Basic(menu);
   planets = new Planets(menu);
-  blacks = new Blacks(menu);
   aliens = new AlienLevel(menu);
+  blacks = new Blacks(menu);
+
 
   //Imagens do Menu Principal
   background = loadImage("Background.png");
   star =  loadImage("StarRed.png");
   planet = loadImage("Terra.png");
+  alien = new Alien(3*xb, yb, r-10);
   blackHole2 = loadImage("Buraco Negro2.png");
-  alien = new Alien(4*xb, yb, r-10, color(#0CEDBE));
 }
 
 void draw() {
@@ -88,27 +89,27 @@ void draw() {
     image(planet, 2*xb, yb, 2*r, 2*r);
     fill(255);
     text("Level 2", 2*xb, yb+r+20);
+   
+    text("Level 3", 3*xb, yb+r+20);
+    alien.desenha();
 
     imageMode(CENTER);
-    image(blackHole2, 3*xb, yb, 2*r, 2*r);
+    image(blackHole2, 4*xb, yb, 2*r, 2*r);
     fill(255);
-    text("Level 3", 3*xb, yb+r+20);
-
     text("Level 4", 4*xb, yb+r+20);
-    alien.desenha();
+    
   } else if (menu.selected==Menu.BASIC) {
     basic.desenha();
     l = Menu.BASIC;
   } else if (menu.selected==Menu.PLANETS) {
     planets.desenha();
     l = Menu.PLANETS;
-  } else if (menu.selected==Menu.BLACK) {
-    blacks.desenha();
-    l = Menu.BLACK;
   } else if (menu.selected==Menu.ALIEN) {
     aliens.desenha();
     l=Menu.ALIEN;
-    
+  } else if (menu.selected==Menu.BLACK) {
+    blacks.desenha();
+    l = Menu.BLACK;
   }
 }
 
@@ -123,13 +124,14 @@ void mousePressed() {
       planets.startLevel();
     }  
     if (dist(mouseX, mouseY, 3*xb, yb)<=r) {
-      menu.selected=Menu.BLACK;
-      blacks.startLevel();
-    }  
-    if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
       menu.selected=Menu.ALIEN;
       aliens.startLevel();
     }
+    if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
+      menu.selected=Menu.BLACK;
+      blacks.startLevel();
+    }  
+
   } 
   if (menu.selected == Menu.WON) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5-alt/2 && mouseY<2.55*height/5+alt/2) {
@@ -145,6 +147,7 @@ void mousePressed() {
       basic.startLevel();
       planets.startLevel();
       blacks.startLevel();
+      aliens.startLevel();
     }
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
       menu.selected = Menu.MENU;

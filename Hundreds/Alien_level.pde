@@ -14,7 +14,7 @@ class AlienLevel {
     y=random(r,height-r);
     raio=30;
     soma=0;
-    alien = new Alien(x,y, r,color(0,255,0));
+    alien = new Alien(x,y,r);
 
     this.menu=menu;
   }
