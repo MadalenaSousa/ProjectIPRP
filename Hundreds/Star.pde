@@ -27,20 +27,6 @@ class Star {
     n=0;
   }
 
-  //Construtor2
-  Star(float x, float y, float raio, float velx, float vely, int r, int g, int b, int n) {
-
-    this.x = x;
-    this.y = y;
-    this.raio = raio;
-    this.r=r;
-    this.g=g;
-    this.b=b;
-    this.velx = velx;
-    this.vely = vely;
-    this.n=n;
-  }
-
   void move() { //Incrementa as cordenadas da estrela
 
     x=x+velx;
