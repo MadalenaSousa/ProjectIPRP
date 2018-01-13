@@ -136,7 +136,7 @@ void mousePressed() {
   } 
   if (menu.selected == Menu.WON) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5-alt/2 && mouseY<2.55*height/5+alt/2) {
-      menu.selected = l+1; //ESTE AINDA NÃO FUNCIONA -> NullPointerException
+      menu.selected = l+1;
       basic.startLevel();
       planets.startLevel();
       blacks.startLevel();
