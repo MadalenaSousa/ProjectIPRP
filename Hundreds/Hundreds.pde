@@ -44,7 +44,7 @@ void draw() {
 
   if (menu.selected == Menu.WON) {
     textAlign(CENTER, CENTER);
-    fill(#35D2E5);
+    fill(#71DBAC);
     textFont(f, 100);
     text("YOU WON!", width/2, height/5);
 
@@ -59,7 +59,7 @@ void draw() {
     text("Menu", width/2, 3.5*height/5);
   } else if (menu.selected == Menu.LOST) {
     textAlign(CENTER, CENTER);
-    fill(#35D2E5);
+    fill(#F7164B);
     textFont(f, 100);
     text("YOU LOST!", width/2, height/5);
 
