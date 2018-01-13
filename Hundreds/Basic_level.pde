@@ -15,7 +15,7 @@ class BasicLevel {
 
   void startLevel() {
     for (int i=0; i<ns; i++) {
-      star[i] = new Star(random(raio, width-raio), random(raio, height-raio), raio, 8, 8, 255, 255, 255, 0);
+      star[i] = new Star();
     }
     soma=0;
   }

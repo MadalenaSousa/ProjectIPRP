@@ -12,10 +12,6 @@ class BlacksLevel {
     raio=30;
     x=random(raio, width-raio);
     y=random(raio, height-raio);
-    if (dist(x, y, xb, yb)<=raiob || dist(x, y, 3*xb, yb)<=raiob) {
-      x=random(raio, width-raio);
-      y=random(raio, height-raio);
-    }
     raiob=50;
     xb= 250;
     yb=height/2;
@@ -27,7 +23,11 @@ class BlacksLevel {
 
   void startLevel() {
     for (int i=0; i<ns; i++) {
-      star[i] = new Star(x, y, raio, 8, 8, 255, 255, 255, 0);
+      star[i] = new Star();
+      if (dist(star[i].x, star[i].y, xb, yb)<=raiob || dist(star[i].x, star[i].y, 3*xb, yb)<=raiob) {
+        star[i].x=random(raio, width-raio);
+        star[i].y=random(raio, height-raio);
+      }
     }
 
     soma=0;
