@@ -1,11 +1,11 @@
-class Basic {
+class BasicLevel {
   int ns;
   Star[] star;
   float raio;
   int soma;
   Menu menu;
 
-  Basic(Menu menu) {
+  BasicLevel(Menu menu) {
     ns=8;
     star = new Star[ns];
     raio=30;

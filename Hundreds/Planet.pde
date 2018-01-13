@@ -6,27 +6,21 @@ class Planet {
   color cor;
   float alfa;
   float inc;
-  boolean anel;
+  boolean ring;
 
   //Construtor
-  Planet(float rplaneta, float rorbita, color cor, float inc, boolean anel) {
+  Planet(float rplaneta, float rorbita, color cor,float alfa, float inc, boolean ring) {
     this.x=rorbita;
     y=height/2;
     this.rplaneta=rplaneta;
     this.rorbita=rorbita;
     this.cor=cor;
-    alfa=PI/2;
+    this.alfa=alfa;
     this.inc=inc;
-    this.anel=anel;
+    this.ring=ring;
   }
 
   //Métodos
-  
-  void anel() {
-    if(anel) {
-    }
-  }
-
   void move() {
     alfa=alfa+inc;
   }
@@ -37,6 +31,12 @@ class Planet {
   }
 
   void desenha() {
+    if (ring) {
+      stroke(cor-100);
+      noFill();
+      strokeWeight(5);
+      ellipse(x, y, 3*rplaneta, rplaneta/2);
+    }
 
     x=rorbita*sin(alfa);
     y=height/2+rorbita*cos(alfa);
@@ -47,5 +47,12 @@ class Planet {
     fill(cor);
     noStroke();
     ellipse(x, y, 2*rplaneta, 2*rplaneta);
+
+    if (ring) {
+      stroke(cor-100);
+      noFill();
+      strokeWeight(5);
+      arc(x, y, 3*rplaneta, rplaneta/2, PI/6, PI-PI/6);
+    }
   }
 }
