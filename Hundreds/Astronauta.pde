@@ -22,7 +22,7 @@ class Astronauta {
       colide = true;
     }
 
-    return colide; //verifica se o a distância entre duas bolas é menor que a soma dos seus raios, devolve true se colidir
+    return colide;
   }
 
   void drag() {
