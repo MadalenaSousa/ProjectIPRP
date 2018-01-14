@@ -25,11 +25,11 @@ class SpaceShipLevel {
       star[i] = new Star(); //criação/reset das estrelas
     }
     for (int i=0; i<ship.length; i++) {
-      ship[i] = new Ship((i+1)*width/3);
+      ship[i] = new Ship((i+1)*width/3); //criação das naves
     }
 
     for (int i=0; i<astronauta.length; i++) {
-      astronauta[i] = new Astronauta();
+      astronauta[i] = new Astronauta(); //criação dos capacetes
     }
 
     soma=0; //reset da soma
@@ -69,7 +69,7 @@ class SpaceShipLevel {
 
   void solveAstronautColision(Astronauta astronauta, Star star) {
 
-    //colisões entre estrelas e naves
+    //colisões entre estrelas e capacetes
     if (star.x <= astronauta.x) { 
       star.velx = -abs(star.velx);
     } else {
@@ -82,7 +82,7 @@ class SpaceShipLevel {
       star.vely = abs(star.vely);
     }
 
-    //não deixa que as estrelas passem por cima das naves, ao colidir move imediatamente a estrela edesenha-a num sítio onde não esteja a colidir
+    //não deixa que as estrelas passem por cima dos capacetes, ao colidir move imediatamente a estrela edesenha-a num sítio onde não esteja a colidir
     star.move(); 
     star.desenha();
   }
@@ -120,7 +120,7 @@ class SpaceShipLevel {
 
       //colisão com as naves
       for (int z=0; z<ship.length; z++) {
-        if (ship[z].colide(star[i])) { //se o planeta e a estrela colidirem
+        if (ship[z].colide(star[i])) { //se anave e a estrela colidirem
           if (star[i].isPressed()) { //se o rato estiver sobre a estrela
             println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
@@ -132,7 +132,7 @@ class SpaceShipLevel {
 
       //colisão com os astronautas
       for (int z=0; z<astronauta.length; z++) {
-        if (astronauta[z].colide(star[i])) { //se o planeta e a estrela colidirem
+        if (astronauta[z].colide(star[i])) { //se o capacete e a estrela colidirem
           if (star[i].isPressed()) { //se o rato estiver sobre a estrela
             println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
@@ -162,8 +162,8 @@ class SpaceShipLevel {
     }
     for (int i=0; i<astronauta.length; i++) {
       if (astronauta[i].hit(mouseX, mouseY)) {
-        astronauta[i].mover = true;
-        astronauta[i].xOffset = astronauta[i].x-mouseX;
+        astronauta[i].mover = true; //garante que ao arrastarmos um capacete e passarmos por cima do outro não passamos a arrastar os dois
+        astronauta[i].xOffset = astronauta[i].x-mouseX; //Offset vai ser adicionado a mouseX e mouseY, ou seja, as coordenadas do capacete vao ser as coordenadas do rato mais o espaço que ele anda
         astronauta[i].yOffset = astronauta[i].y-mouseY;
       }
     }

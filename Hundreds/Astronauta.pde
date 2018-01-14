@@ -22,16 +22,16 @@ class Astronauta {
       colide = true;
     }
 
-    return colide;
+    return colide; //verifica se o a distância entre o capacete e as estrelas é menor que a soma dos seus raios, devolve true se colidir
   }
 
   void drag() {
-    if (hit(mouseX, mouseY)&& mover && mousePressed) {
-      x=mouseX+xOffset;
+    if (hit(mouseX, mouseY) && mover && mousePressed) { //se o rato estiver em cima, pressionado e mover==true
+      x=mouseX+xOffset; //coordenadas passam a ter o valor das coordenadas do rato mais o Offset
       y=mouseY+yOffset;
     }
     if (mousePressed==false) {
-      mover = false;
+      mover = false; //ao ter o rato pressionado mover = true e vice versa
     }
   }
 
@@ -40,7 +40,7 @@ class Astronauta {
     if (dist(x1, y1, x, y)<=r) {
       hit=true;
     }
-    return hit;
+    return hit; //veirifica se está ou não sobre um ponto(que será mouseX e mouseY)
   }
 
   void desenha() {
