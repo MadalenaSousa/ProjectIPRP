@@ -1,9 +1,10 @@
-PImage background, star, blackHole;
+PImage background, star, ship, blackHole;
 PFont f;
 Alien alien;
 Planet planet;
 BasicLevel basic;
 PlanetsLevel planets;
+SpaceShipLevel spaceship;
 BlacksLevel blacks;
 AlienLevel aliens;
 float xb, yb;
@@ -17,7 +18,7 @@ void setup() {
 
   //Definição de variáveis
   r=80;
-  xb=width/5;
+  xb=width/6;
   yb=height/2;
   f = createFont ("Copperplate-Bold", 100, true);
   menu = new Menu(Menu.MENU);
@@ -27,6 +28,7 @@ void setup() {
   //Criação dos Níveis
   basic = new BasicLevel(menu);
   planets = new PlanetsLevel(menu);
+  spaceship = new SpaceShipLevel(menu);
   aliens = new AlienLevel(menu);
   blacks = new BlacksLevel(menu);
 
@@ -35,7 +37,8 @@ void setup() {
   background = loadImage("Background.png");
   star =  loadImage("StarRed.png");
   planet = new Planet(r-10, 2*xb, color(#0C4EF0), PI/2, 0, true);
-  alien = new Alien(3*xb, yb, r-10);
+  ship = loadImage("Nave Espacial.png");
+  alien = new Alien(4*xb, yb, r-10);
   blackHole = loadImage("Buraco Negro.png");
 }
 
@@ -116,20 +119,29 @@ void draw() {
     planet.desenha();
 
     fill(255);
+    imageMode(CENTER);
+    image(ship, 3*xb, yb, 2*r, 2*r);
+    fill(255);
     text("Level 3", 3*xb, yb+r+20);
+
+    fill(255);
+    text("Level 4", 4*xb, yb+r+20);
     alien.desenha();
 
     fill(255);
     imageMode(CENTER);
-    image(blackHole, 4*xb, yb, 2*r, 2*r);
+    image(blackHole, 5*xb, yb, 2*r, 2*r);
     fill(255);
-    text("Level 4", 4*xb, yb+r+20);
+    text("Level 5", 5*xb, yb+r+20);
   } else if (menu.selected==Menu.BASIC) { //Menu básico
     basic.desenha();
     l = Menu.BASIC;
-  } else if (menu.selected==Menu.PLANETS) {//Menu planetas
+  } else if (menu.selected==Menu.PLANETS) {
     planets.desenha();
     l = Menu.PLANETS;
+  } else if (menu.selected==Menu.SHIP) {//Menu spaceship
+    spaceship.desenha();
+    l = Menu.SHIP;
   } else if (menu.selected==Menu.ALIEN) {//Menu Aliens
     aliens.desenha();
     l = Menu.ALIEN;
@@ -151,10 +163,14 @@ void mousePressed() {
       planets.startLevel();
     }  
     if (dist(mouseX, mouseY, 3*xb, yb)<=r) {
+      menu.selected=Menu.SHIP;
+      spaceship.startLevel();
+    }
+    if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
       menu.selected=Menu.ALIEN;
       aliens.startLevel();
     }
-    if (dist(mouseX, mouseY, 4*xb, yb)<=r) {
+    if (dist(mouseX, mouseY, 5*xb, yb)<=r) {
       menu.selected=Menu.BLACK;
       blacks.startLevel();
     }
@@ -166,6 +182,7 @@ void mousePressed() {
       menu.selected = l+1;
       basic.startLevel();
       planets.startLevel();
+      spaceship.startLevel();
       blacks.startLevel();
       aliens.startLevel();
     }
@@ -180,6 +197,7 @@ void mousePressed() {
       menu.selected = l;
       basic.startLevel();
       planets.startLevel();
+      spaceship.startLevel();
       blacks.startLevel();
       aliens.startLevel();
     }
@@ -187,7 +205,7 @@ void mousePressed() {
       menu.selected = Menu.MENU;
     }
   }
-  
+
   //Regressar ao MENU ao ganhar o jogo todo
   if (menu.selected == Menu.FINAL) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
