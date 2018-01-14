@@ -50,7 +50,7 @@ class Ship {
 
   void mousePressed() {
     if (abs(x-mouseX)<=rx && abs(y-mouseY)<=ry) {
-      press = true;
+      press =! press;
     }
   }
 }
