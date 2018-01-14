@@ -85,7 +85,7 @@ class AlienLevel {
           if (s.isPressed() || s1.isPressed()) { //se o rato estiver sobre uma delas
             println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
-          } else { //caso contrária colidem e o jogo continua
+          } else { //caso contrário colidem e o jogo continua
             s.resolverColisao(s1);
           }
         }

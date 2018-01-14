@@ -1,4 +1,6 @@
 class PlanetsLevel {
+
+  //Atributos
   int ns, np;
   Star[] star;
   Planet[] planet;
@@ -6,6 +8,7 @@ class PlanetsLevel {
   int soma;
   Menu menu;
 
+  //Construtor
   PlanetsLevel(Menu menu) {
     ns=5;
     np=9;
@@ -18,9 +21,10 @@ class PlanetsLevel {
 
   void startLevel() {
     for (int i=0; i<ns; i++) {
-      star[i] = new Star();
+      star[i] = new Star(); //criação/reset das estrelas
     }
 
+    //criação de cada planeta e do sol com as suas características especificas
     planet[0] = new Planet(100, 0, color(255, 255, 0), PI/2, 0, false); //Sol
     planet[1] = new Planet(30, 1.5*width/9, color(#AA9999), random(PI/4, 3*PI/4), TWO_PI/50, false);
     planet[2] = new Planet(40, 2.5*width/9, color(#DE4310), random(PI/4, 3*PI/4), TWO_PI/100, false);
@@ -31,11 +35,13 @@ class PlanetsLevel {
     planet[7] = new Planet(45, 7.5*width/9, color(#56D8FA), random(PI/4, 3*PI/4), TWO_PI/600, false);
     planet[8] = new Planet(45, 8.5*width/9, color(#0C4EF0), random(PI/4, 3*PI/4), TWO_PI/700, true);
 
-    soma=0;
+    soma=0; //reset da soma
   }
 
   void solvePlanetColision(Planet planet, Star star) {
-    if (star.x <= planet.x) { //Altera o sentido do movimento
+
+    //colisões entre estrelas e planetas
+    if (star.x <= planet.x) { 
       star.velx = -abs(star.velx);
     } else {
       star.velx = abs(star.velx);
@@ -47,7 +53,8 @@ class PlanetsLevel {
       star.vely = abs(star.vely);
     }
 
-    star.move();
+    //não deixa que as estrelas passem por cima dos planetas, ao colidir move imediatamente a estrela edesenha-a num sítio onde não esteja a colidir
+    star.move(); 
     star.desenha();
   }
 
@@ -65,42 +72,48 @@ class PlanetsLevel {
 
   void desenha() {
 
-    if (soma==100) { //Se a soma for maior que 100 é apresentado o menu
+    //soma = 100 -> ganha
+    if (soma==100) { 
       menu.selected = Menu.WON;
     }
-    
-    for(int i=0; i<np; i++) {
+
+    //desenha os planetas
+    for (int i=0; i<np; i++) {
       planet[i].desenha();
     }
 
     //Estrelas
-    for (int i=0; i<ns; i++) {
-      if (star[i].isPressed()) { //Crescem, ficam vermelhas e o número aumenta quando o rato esta por cima
-        star[i].grow();
-        star[i].redgiant();
-      }
-      star[i].move(); //Movimento
-      star[i].desenha();//Desenha
-      star[i].colideWall(); //Colisão com as paredes
 
-      for (int j=0; j<ns; j++) { //Colisão entre estrelas
-        if (star[i].colide(star[j]) && i != j) {
-          if (star[i].isPressed() || star[j].isPressed()) {
-            println("Perdeu!");
+    //básicos: criação, movimento, etc
+    for (int i=0; i<ns; i++) {
+      if (star[i].isPressed()) { //se o rato estiver por cima da estrela
+        star[i].grow(); //cresce
+        star[i].redgiant(); //fica vermelha
+      }
+      star[i].move(); //move
+      star[i].desenha();//desenha
+      star[i].colideWall(); //colide com as paredes
+
+      //colisão entre estrelas
+      for (int j=0; j<ns; j++) { 
+        if (star[i].colide(star[j]) && i != j) { //se duas estrelas diferentes colidirem
+          if (star[i].isPressed() || star[j].isPressed()) { //se o rato estiver sobre uma delas
+            println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
           } else {
-            star[i].resolverColisao(star[j]);
+            star[i].resolverColisao(star[j]); //caso contrário colidem e o jogo continua
           }
         }
       }
 
+      //colisão entre planetas e estrelas
       for (int z=0; z<np; z++) {
-        if (planet[z].colide(star[i])) {
-          if (star[i].isPressed()) {
-            println("Perdeu!");
+        if (planet[z].colide(star[i])) { //se o planeta e a estrela colidirem
+          if (star[i].isPressed()) { //se o rato estiver sobre a estrela
+            println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
           } else {
-            solvePlanetColision(planet[z], star[i]);
+            solvePlanetColision(planet[z], star[i]); //caso contrário colidem e o jogo continua
           }
         }
       }

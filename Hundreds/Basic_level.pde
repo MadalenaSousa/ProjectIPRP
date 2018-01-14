@@ -61,7 +61,7 @@ class BasicLevel {
             println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;
           } else {
-            star[i].resolverColisao(star[j]); //caso contrária colidem e o jogo continua
+            star[i].resolverColisao(star[j]); //caso contrário colidem e o jogo continua
           }
         }
       }

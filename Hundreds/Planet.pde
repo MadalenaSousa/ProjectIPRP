@@ -20,14 +20,13 @@ class Planet {
     this.ring=ring;
   }
 
-  //Métodos
   void move() {
     alfa=alfa+inc;
   }
 
   boolean colide(Star s) {
 
-    return dist(x, y, s.x, s.y) <= (rplaneta + s.raio); //Verifica se o a distância entre duas bolas é menor que a soma dos seus raios
+    return dist(x, y, s.x, s.y) <= (rplaneta + s.raio); //verifica se o a distância entre duas bolas é menor que a soma dos seus raios, devolve true se colidir
   }
 
   void desenha() {
