@@ -11,7 +11,7 @@ class Ship {
     ry = 80;
     this.x = x;
     y = height-ry;
-    incY = random(3, 5);
+    incY = 5;
     press = false;
     spaceship = loadImage("Nave Espacial.png");
   }
@@ -20,7 +20,7 @@ class Ship {
     if (press) {
       incY = 0;
     } else {
-      incY = random(3, 5);
+      incY = 5;
     }
     if (y <= -ry) {
       y = height+ry;
@@ -41,9 +41,16 @@ class Ship {
   void desenha() {
 
     move();
+    //mousePressed();
 
     //Nave
     imageMode(CENTER);
     image(spaceship, x, y, 2*rx, 2*ry);
+  }
+
+  void mousePressed() {
+    if (abs(x-mouseX)<=rx && abs(y-mouseY)<=ry) {
+      press = true;
+    }
   }
 }
