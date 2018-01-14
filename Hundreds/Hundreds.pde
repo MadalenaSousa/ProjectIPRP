@@ -97,7 +97,7 @@ void draw() {
 
     fill(255);
     imageMode(CENTER);
-    image(star, xb, yb, 2*r+40, 2*r+40);
+    image(star, xb, yb, 2*r+20, 2*r+20);
     textSize(30);
     text("Level 1", xb, yb+r+20);
   
