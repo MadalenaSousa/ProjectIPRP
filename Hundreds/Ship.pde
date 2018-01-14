@@ -11,7 +11,7 @@ class Ship {
     ry = 80;
     this.x = x;
     y = height-ry;
-    incY = 5;
+    incY = 8;
     press = false;
     spaceship = loadImage("Nave Espacial.png");
   }
@@ -50,7 +50,7 @@ class Ship {
 
   void mousePressed() {
     if (abs(x-mouseX)<=rx && abs(y-mouseY)<=ry) {
-      press = true;
+      press =! press;
     }
   }
 }
