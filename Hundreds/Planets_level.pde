@@ -48,7 +48,7 @@ class PlanetsLevel {
     }
 
     star.move();
-    //star.desenha();
+    star.desenha();
   }
 
   //Função de somar
@@ -80,7 +80,7 @@ class PlanetsLevel {
         star[i].redgiant();
       }
       star[i].move(); //Movimento
-      //star[i].desenha();//Desenha
+      star[i].desenha();//Desenha
       star[i].colideWall(); //Colisão com as paredes
 
       for (int j=0; j<ns; j++) { //Colisão entre estrelas
@@ -104,7 +104,7 @@ class PlanetsLevel {
           }
         }
       }
-      star[i].desenha();
+      //star[i].desenha();
     }
 
 
