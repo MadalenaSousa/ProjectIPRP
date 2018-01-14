@@ -44,8 +44,8 @@ void setup() {
 
 void draw() {
   //Desenho do background
-  imageMode(CORNER);
-  image(background, 0, 0, width, height);
+  imageMode(CENTER);
+  image(background, width/2, height/2, width, height);
 
   //Definição do menu WON
   if (menu.selected == Menu.WON) {

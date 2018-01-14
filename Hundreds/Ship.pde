@@ -32,7 +32,7 @@ class Ship {
   boolean colide(Star s) {
     boolean colide = false;
 
-    if (abs(x-s.x)<=rx && abs(y-s.y)<=ry) {
+    if (abs(x-s.x)<=rx-40+s.raio && abs(y-s.y)<=ry-5+s.raio) {
       colide = true;
     }
 
