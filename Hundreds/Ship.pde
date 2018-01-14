@@ -5,7 +5,8 @@ class Ship {
   float x, y, rx, ry;
   float incY;
   boolean press;
-
+  
+  //Construtor
   Ship(float x) {
     rx = 70;
     ry = 80;

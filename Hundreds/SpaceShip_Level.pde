@@ -4,6 +4,7 @@ class SpaceShipLevel {
   int ns;
   Star[] star;
   Ship[] ship;
+  Astronauta[] astronauta;
   float raio;
   int soma;
   Menu menu;
@@ -12,7 +13,8 @@ class SpaceShipLevel {
   SpaceShipLevel(Menu menu) {
     ns=8;
     star = new Star[ns];
-    ship = new Ship[3];
+    ship = new Ship[2];
+    astronauta = new Astronauta[2];
     raio=30;
     soma=0;
     this.menu = menu;
@@ -23,8 +25,13 @@ class SpaceShipLevel {
       star[i] = new Star(); //criação/reset das estrelas
     }
     for (int i=0; i<ship.length; i++) {
-      ship[i] = new Ship((i+1)*width/4);
+      ship[i] = new Ship((i+1)*width/3);
     }
+
+    for (int i=0; i<astronauta.length; i++) {
+      astronauta[i] = new Astronauta();
+    }
+
     soma=0; //reset da soma
   }
 
@@ -50,6 +57,26 @@ class SpaceShipLevel {
     }
 
     if (star.y <= ship.y) {
+      star.vely = -abs(star.vely);
+    } else {
+      star.vely = abs(star.vely);
+    }
+
+    //não deixa que as estrelas passem por cima das naves, ao colidir move imediatamente a estrela edesenha-a num sítio onde não esteja a colidir
+    star.move(); 
+    star.desenha();
+  }
+
+  void solveAstronautColision(Astronauta astronauta, Star star) {
+
+    //colisões entre estrelas e naves
+    if (star.x <= astronauta.x) { 
+      star.velx = -abs(star.velx);
+    } else {
+      star.velx = abs(star.velx);
+    }
+
+    if (star.y <= astronauta.y) {
       star.vely = -abs(star.vely);
     } else {
       star.vely = abs(star.vely);
@@ -102,6 +129,18 @@ class SpaceShipLevel {
           }
         }
       }
+
+      //colisão com os astronautas
+      for (int z=0; z<astronauta.length; z++) {
+        if (astronauta[z].colide(star[i])) { //se o planeta e a estrela colidirem
+          if (star[i].isPressed()) { //se o rato estiver sobre a estrela
+            println("Perdeu!"); //o jogador perde
+            menu.selected = Menu.LOST;
+          } else {
+            solveAstronautColision(astronauta[z], star[i]); //caso contrário colidem e o jogo continua
+          }
+        }
+      }
     }
 
     //Texto do número
@@ -113,10 +152,20 @@ class SpaceShipLevel {
     for (int i=0; i<ship.length; i++) {
       ship[i].desenha();
     }
+    for (int i=0; i<astronauta.length; i++) {
+      astronauta[i].desenha();
+    }
   }
   void mousePressed() {
     for (int i = 0; i<ship.length; i++) {
       ship[i].mousePressed();
+    }
+    for (int i=0; i<astronauta.length; i++) {
+      if (astronauta[i].hit(mouseX, mouseY)) {
+        astronauta[i].mover = true;
+        astronauta[i].xOffset = astronauta[i].x-mouseX;
+        astronauta[i].yOffset = astronauta[i].y-mouseY;
+      }
     }
   }
 }

@@ -152,7 +152,7 @@ void draw() {
 }
 
 void mousePressed() {
-  if(menu.selected == Menu.SHIP) {
+  if (menu.selected == Menu.SHIP) {
     spaceship.mousePressed();
   }
 
