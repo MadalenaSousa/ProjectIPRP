@@ -17,7 +17,7 @@ void setup() {
   size(1000, 800);
 
   //Definição de variáveis
-  r=80;
+  r=60;
   xb=width/6;
   yb=height/2;
   f = createFont ("Copperplate-Bold", 100, true);
