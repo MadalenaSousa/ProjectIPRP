@@ -43,6 +43,7 @@ void draw() {
   imageMode(CORNER);
   image(background, 0, 0, width, height);
 
+//Definição do menu WON
   if (menu.selected == Menu.WON) {
     textAlign(CENTER, CENTER);
     fill(#71DBAC);
@@ -59,7 +60,10 @@ void draw() {
     textFont(f, 40);
     text("Next Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
-  } else if (menu.selected == Menu.LOST) {
+  } 
+  
+//Definição do menu LOST  
+  else if (menu.selected == Menu.LOST) {
     textAlign(CENTER, CENTER);
     fill(#F7164B);
     textFont(f, 100);
@@ -75,7 +79,9 @@ void draw() {
     textFont(f, 40);
     text("Restart Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
-  } else if (menu.selected == Menu.FINAL){
+  } 
+////Definição do menu FINAL
+  else if (menu.selected == Menu.FINAL){
     textAlign(CENTER, CENTER);
     fill(#71DBAC);
     textFont(f, 170);
@@ -88,7 +94,10 @@ void draw() {
     fill(0);
     textFont(f, 40);
     text("Menu", width/2, 3.5*height/5);
-  }else if (menu.selected == Menu.MENU) {
+  }
+  
+//Definição do menu MENU (principal)
+  else if (menu.selected == Menu.MENU) {
     textAlign(CENTER, CENTER);
     fill(200, 0, 255);
     textFont(f, 100);
@@ -113,16 +122,16 @@ void draw() {
     image(blackHole, 4*xb, yb, 2*r, 2*r);
     fill(255);
     text("Level 4", 4*xb, yb+r+20);
-  } else if (menu.selected==Menu.BASIC) {
+  } else if (menu.selected==Menu.BASIC) { // Menu básico
     basic.desenha();
     l = Menu.BASIC;
-  } else if (menu.selected==Menu.PLANETS) {
+  } else if (menu.selected==Menu.PLANETS) {//Menu planetas
     planets.desenha();
     l = Menu.PLANETS;
-  } else if (menu.selected==Menu.ALIEN) {
+  } else if (menu.selected==Menu.ALIEN) {// Menu Aliens
     aliens.desenha();
     l = Menu.ALIEN;
-  } else if (menu.selected==Menu.BLACK) {
+  } else if (menu.selected==Menu.BLACK) { //Menu Blacks
     blacks.desenha();
     l = Menu.BLACK;
   }
