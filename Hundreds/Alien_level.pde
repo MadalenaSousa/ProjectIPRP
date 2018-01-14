@@ -21,6 +21,7 @@ class AlienLevel {
   }
 
   void startLevel() {
+    alien.r=r;
     star.clear(); 
     //Adicionar estrelas
     for (int i=0; i<ns; i++) {
@@ -48,7 +49,8 @@ class AlienLevel {
       if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) { // se houver colisão entre a estrela e o Alien
        star.remove(i);//estrela em causa desaparece
        i--;
-       alien.r++;//o raio do Alien aumenta     
+       
+       alien.r=alien.r+3;//o raio do Alien aumenta     
     }
     // caso o numero de estrelas seja = 0, o jogador perde o nível
      if (star.size()==0) {
