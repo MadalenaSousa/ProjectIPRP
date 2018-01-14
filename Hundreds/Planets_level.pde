@@ -38,6 +38,18 @@ class PlanetsLevel {
     soma=0; //reset da soma
   }
 
+  //Função de somar
+  int soma() {
+
+    soma=0;
+
+    for (int i=0; i<ns; i++) {
+      soma=soma+star[i].n;
+    }
+
+    return soma;
+  }
+
   void solvePlanetColision(Planet planet, Star star) {
 
     //colisões entre estrelas e planetas
@@ -56,18 +68,6 @@ class PlanetsLevel {
     //não deixa que as estrelas passem por cima dos planetas, ao colidir move imediatamente a estrela edesenha-a num sítio onde não esteja a colidir
     star.move(); 
     star.desenha();
-  }
-
-  //Função de somar
-  int soma() {
-
-    soma=0;
-
-    for (int i=0; i<ns; i++) {
-      soma=soma+star[i].n;
-    }
-
-    return soma;
   }
 
   void desenha() {

@@ -1,17 +1,20 @@
 PImage background, star, ship, blackHole;
 PFont f;
+Menu menu;
 Alien alien;
 Planet planet;
+
+//Níveis
 BasicLevel basic;
 PlanetsLevel planets;
 SpaceShipLevel spaceship;
 BlacksLevel blacks;
 AlienLevel aliens;
+
 float xb, yb;
 float r;
 int larg, alt;
 int l;
-Menu menu;
 
 void setup() {
   size(1000, 800);
@@ -133,13 +136,13 @@ void draw() {
     image(blackHole, 5*xb, yb, 2*r, 2*r);
     fill(255);
     text("Level 5", 5*xb, yb+r+20);
-  } else if (menu.selected==Menu.BASIC) { //Menu básico
+  } else if (menu.selected==Menu.BASIC) { //Menu Basic
     basic.desenha();
     l = Menu.BASIC;
-  } else if (menu.selected==Menu.PLANETS) {
+  } else if (menu.selected==Menu.PLANETS) { //Menu Planets
     planets.desenha();
     l = Menu.PLANETS;
-  } else if (menu.selected==Menu.SHIP) {//Menu spaceship
+  } else if (menu.selected==Menu.SHIP) {//Menu Spaceship
     spaceship.desenha();
     l = Menu.SHIP;
   } else if (menu.selected==Menu.ALIEN) {//Menu Aliens
@@ -152,6 +155,7 @@ void draw() {
 }
 
 void mousePressed() {
+  
   if (menu.selected == Menu.SHIP) {
     spaceship.mousePressed();
   }

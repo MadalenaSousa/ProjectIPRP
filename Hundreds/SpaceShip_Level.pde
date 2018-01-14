@@ -120,7 +120,7 @@ class SpaceShipLevel {
 
       //colisão com as naves
       for (int z=0; z<ship.length; z++) {
-        if (ship[z].colide(star[i])) { //se anave e a estrela colidirem
+        if (ship[z].colide(star[i])) { //se a nave e a estrela colidirem
           if (star[i].isPressed()) { //se o rato estiver sobre a estrela
             println("Perdeu!"); //o jogador perde
             menu.selected = Menu.LOST;

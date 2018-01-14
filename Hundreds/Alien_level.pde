@@ -45,7 +45,7 @@ class AlienLevel {
   void ComerEstrelas() {
 
     for (int i=0; i<star.size(); i++) { //executa para o arraylist todo(star.size), mesmo depois do seu tamanho variar
-      Star s = star.get(i); //vai buscar(get) todos os elementos(i) do array e testa se...
+      Star s = star.get(i); //vai buscar(get) todos os elementos(i) do array e testa se
       if (dist(s.x, s.y, alien.x, alien.y)<=s.raio+alien.r) { // há colisão entre a estrela e o Alien
         star.remove(i);// se sim, a estrela em causa desaparece
         i--; // volta a testar o índice onde está porque agora já lá está outra estrela que ainda não foi testada
