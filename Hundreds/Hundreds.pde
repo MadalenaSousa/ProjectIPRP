@@ -15,6 +15,7 @@ Menu menu;
 void setup() {
   size(1000, 800);
 
+  //Definição de variáveis
   r=80;
   xb=width/5;
   yb=height/2;
@@ -33,7 +34,7 @@ void setup() {
   //Imagens do Menu Principal
   background = loadImage("Background.png");
   star =  loadImage("StarRed.png");
-  planet = new Planet(r-10, 2*xb, color(#0C4EF0),PI/2, 0, true);
+  planet = new Planet(r-10, 2*xb, color(#0C4EF0), PI/2, 0, true);
   alien = new Alien(3*xb, yb, r-10);
   blackHole = loadImage("Buraco Negro.png");
 }
@@ -43,7 +44,7 @@ void draw() {
   imageMode(CORNER);
   image(background, 0, 0, width, height);
 
-//Definição do menu WON
+  //Definição do menu WON
   if (menu.selected == Menu.WON) {
     textAlign(CENTER, CENTER);
     fill(#71DBAC);
@@ -61,8 +62,8 @@ void draw() {
     text("Next Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
   } 
-  
-//Definição do menu LOST  
+
+  //Definição do menu LOST  
   else if (menu.selected == Menu.LOST) {
     textAlign(CENTER, CENTER);
     fill(#F7164B);
@@ -80,8 +81,9 @@ void draw() {
     text("Restart Level", width/2, 2.5*height/5);
     text("Menu", width/2, 3.5*height/5);
   } 
-////Definição do menu FINAL
-  else if (menu.selected == Menu.FINAL){
+
+  //Definição do menu FINAL
+  else if (menu.selected == Menu.FINAL) {
     textAlign(CENTER, CENTER);
     fill(#71DBAC);
     textFont(f, 170);
@@ -95,8 +97,8 @@ void draw() {
     textFont(f, 40);
     text("Menu", width/2, 3.5*height/5);
   }
-  
-//Definição do menu MENU (principal)
+
+  //Definição do menu MENU (principal)
   else if (menu.selected == Menu.MENU) {
     textAlign(CENTER, CENTER);
     fill(200, 0, 255);
@@ -108,27 +110,27 @@ void draw() {
     image(star, xb, yb, 2*r+20, 2*r+20);
     textSize(30);
     text("Level 1", xb, yb+r+20);
-  
+
     fill(255);
     text("Level 2", 2*xb, yb+r+20);
     planet.desenha();
-    
+
     fill(255);
     text("Level 3", 3*xb, yb+r+20);
     alien.desenha();
-    
+
     fill(255);
     imageMode(CENTER);
     image(blackHole, 4*xb, yb, 2*r, 2*r);
     fill(255);
     text("Level 4", 4*xb, yb+r+20);
-  } else if (menu.selected==Menu.BASIC) { // Menu básico
+  } else if (menu.selected==Menu.BASIC) { //Menu básico
     basic.desenha();
     l = Menu.BASIC;
   } else if (menu.selected==Menu.PLANETS) {//Menu planetas
     planets.desenha();
     l = Menu.PLANETS;
-  } else if (menu.selected==Menu.ALIEN) {// Menu Aliens
+  } else if (menu.selected==Menu.ALIEN) {//Menu Aliens
     aliens.desenha();
     l = Menu.ALIEN;
   } else if (menu.selected==Menu.BLACK) { //Menu Blacks
@@ -138,6 +140,7 @@ void draw() {
 }
 
 void mousePressed() {
+  //Iniciar níveis no MENU ao pressionar o rato
   if (menu.selected == Menu.MENU) {
     if (dist(mouseX, mouseY, xb, yb)<=r) {
       menu.selected=Menu.BASIC;
@@ -156,6 +159,8 @@ void mousePressed() {
       blacks.startLevel();
     }
   } 
+
+  //Iniciar os níveis no menu WON
   if (menu.selected == Menu.WON) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5-alt/2 && mouseY<2.55*height/5+alt/2) {
       menu.selected = l+1;
@@ -167,7 +172,9 @@ void mousePressed() {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
       menu.selected = Menu.MENU;
     }
-  } 
+  }
+
+  //Iniciar os níveis no menu LOST
   if (menu.selected == Menu.LOST) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>2.55*height/5-alt/2 && mouseY<2.55*height/5+alt/2) {
       menu.selected = l;
@@ -180,7 +187,9 @@ void mousePressed() {
       menu.selected = Menu.MENU;
     }
   }
-    if (menu.selected == Menu.FINAL) {
+  
+  //Regressar ao MENU ao ganhar o jogo todo
+  if (menu.selected == Menu.FINAL) {
     if (mouseX>width/2-larg/2 && mouseX<width/2+larg/2 && mouseY>3.55*height/5-alt/2 && mouseY<3.55*height/5+alt/2) {
       menu.selected = Menu.MENU;
     }
