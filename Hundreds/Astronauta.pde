@@ -18,7 +18,7 @@ class Astronauta {
   boolean colide(Star s) {
     boolean colide = false;
 
-    if (dist(s.x, s.y, x, y)<=r) {
+    if (dist(s.x, s.y, x, y)<=r+15) {
       colide = true;
     }
 
