@@ -11,13 +11,13 @@ class Ship {
     ry = 80;
     this.x = x;
     y = height-ry;
-    incY = random(1, 5);
+    incY = random(3, 5);
     press = false;
     spaceship = loadImage("Nave Espacial.png");
   }
 
   void move() {
-    if(press) {
+    if (press) {
       incY = 0;
     } else {
       incY = random(3, 5);
@@ -30,19 +30,12 @@ class Ship {
 
   boolean colide(Star s) {
     boolean colide = false;
-    
-    if(abs(x-s.x)<=rx && abs(y-s.y)<=ry) {
+
+    if (abs(x-s.x)<=rx && abs(y-s.y)<=ry) {
       colide = true;
     }
 
     return colide; //verifica se o a distância entre duas bolas é menor que a soma dos seus raios, devolve true se colidir
-  }
-  
-  void mousePressed() {
-    
-    if(abs(x-mouseX)<=rx && abs(y-mouseY)<=ry) {
-      press =! press;
-    }
   }
 
   void desenha() {

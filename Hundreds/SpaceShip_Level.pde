@@ -113,14 +113,13 @@ class SpaceShipLevel {
     for (int i=0; i<ship.length; i++) {
       ship[i].desenha();
     }
-    
-    mousePressed();
-    
   }
 
-  void mousePressed() {
+  /*void mousePressed() {
     for (int i=0; i<ship.length; i++) {
-      ship[i].mousePressed();
+      if (abs(ship[i].x-mouseX)<=ship[i].rx && abs(ship[i].y-mouseY)<=ship[i].ry) {
+        ship[i].press =! ship[i].press;
+      }
     }
-  }
+  }*/
 }

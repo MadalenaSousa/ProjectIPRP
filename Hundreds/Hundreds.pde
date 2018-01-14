@@ -152,6 +152,8 @@ void draw() {
 }
 
 void mousePressed() {
+  //spaceship.mousePressed();
+
   //Iniciar níveis no MENU ao pressionar o rato
   if (menu.selected == Menu.MENU) {
     if (dist(mouseX, mouseY, xb, yb)<=r) {
