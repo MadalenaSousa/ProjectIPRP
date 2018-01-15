@@ -30,20 +30,23 @@ class BasicLevel {
 
     for (int i=0; i<ns; i++) {
       soma=soma+star[i].n;
+      if (soma>=100) {
+        soma=100;
+      }
     }
 
     return soma;
   }
 
   void desenha() {
-    
+
     //soma = 100 -> ganha
     if (soma>=100) { 
       menu.selected = Menu.WON;
     }
 
     //Estrelas
-    
+
     //básicos: criação, movimento, etc
     for (int i=0; i<ns; i++) {  
       if (star[i].isPressed()) { //se o rato estiver por cima da estrela
@@ -53,7 +56,7 @@ class BasicLevel {
       star[i].colideWall(); //colide com as paredes
       star[i].move(); //move
       star[i].desenha(); //desenha
-      
+
       //colisão com estrelas
       for (int j=0; j<ns; j++) {
         if (star[i].colide(star[j]) && i != j) { //se duas estrelas diferentes colidirem

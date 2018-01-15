@@ -23,7 +23,7 @@ void setup() {
   r=60;
   xb=width/6;
   yb=height/2;
-  f = createFont ("Copperplate-Bold", 100, true);
+  f = createFont ("Bauhaus 93", 100, true);
   menu = new Menu(Menu.MENU);
   larg = 305;
   alt = 100;

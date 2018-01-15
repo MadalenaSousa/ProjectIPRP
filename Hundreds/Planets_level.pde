@@ -45,6 +45,9 @@ class PlanetsLevel {
 
     for (int i=0; i<ns; i++) {
       soma=soma+star[i].n;
+      if (soma>=100) {
+        soma=100;
+      }
     }
 
     return soma;

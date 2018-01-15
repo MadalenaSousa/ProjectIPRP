@@ -1,5 +1,5 @@
 class BlacksLevel {
-  
+
   //Atributos
   PImage blackHole;
   int ns;
@@ -7,7 +7,7 @@ class BlacksLevel {
   float raio, raiob, xb, yb, xb2, x, y;
   int soma;
   Menu menu;
-  
+
   //Construtor
   BlacksLevel(Menu menu) {
     ns=3;
@@ -42,19 +42,22 @@ class BlacksLevel {
 
     for (int i=0; i<ns; i++) {
       soma=soma+star[i].n;
+      if (soma>=100) {
+        soma=100;
+      }
     }
 
     return soma;
   }
 
   void Colisaob() {
-    
+
     //colisão com os buracos negros
     for (int i=0; i<ns; i++) {
 
       float d1 = dist (star[i].x, star[i].y, xb, yb);
       float d2 = dist (star[i].x, star[i].y, xb2, yb); 
-      
+
       if (d1<=star[i].raio+raiob || d2<=star[i].raio+raiob ) { //se a distância do centro da estrela ao centro do buraco negro for menor ou igual à soma dos raios:
         star[i].velx = -1*star[i].velx; //muda o sentido do movimento em x das estrela 
         star[i].vely = -1*star[i].vely; //muda o sentido do movimento em y das estrela 
@@ -69,7 +72,7 @@ class BlacksLevel {
   }
 
   void desenha() {
-    
+
     //soma = 100 -> ganha
     if (soma>=100) { 
       menu.selected = Menu.FINAL;
@@ -86,7 +89,7 @@ class BlacksLevel {
       star[i].colideWall(); //colide com as paredes
       star[i].move(); //move
       star[i].desenha(); //desenha
-      
+
       //colisão com estrelas
       for (int j=0; j<ns; j++) { //se duas estrelas diferentes colidirem
         if (star[i].colide(star[j]) && i!=j) { //se o rato estiver sobre uma delas

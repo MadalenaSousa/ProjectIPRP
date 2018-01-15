@@ -1,5 +1,5 @@
 class AlienLevel {
-  
+
   //Atributos
   int ns;
   ArrayList<Star> star;
@@ -7,7 +7,7 @@ class AlienLevel {
   float raio, r, x, y;
   int soma;
   Menu menu;
-  
+
   //Construtor
   AlienLevel(Menu menu) {
     ns=9;
@@ -37,6 +37,9 @@ class AlienLevel {
 
     for (Star s : star) { //para cada estrela s no arraylist star
       soma=soma+s.n;
+      if (soma>=100) {
+        soma=100;
+      }
     }
 
     return soma;
@@ -61,7 +64,7 @@ class AlienLevel {
   }
 
   void desenha() {
-    
+
     //soma = 100 -> ganha
     if (soma>=100) { 
       menu.selected = Menu.WON;
