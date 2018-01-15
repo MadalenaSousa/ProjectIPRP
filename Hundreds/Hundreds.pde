@@ -49,7 +49,9 @@ void draw() {
   //Desenho do background
   imageMode(CENTER);
   image(background, width/2, height/2, width, height);
-
+   
+  //If que define o que apresentar com a variavel selected == a determindado menu
+   
   //Definição do menu WON
   if (menu.selected == Menu.WON) {
     textAlign(CENTER, CENTER);
